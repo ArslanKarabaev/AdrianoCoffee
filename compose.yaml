@@ -1,0 +1,26 @@
+services:
+  db_pg_16:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: AdrianoCoffee
+      POSTGRES_USER: AdrianoCoffee_User
+      POSTGRES_PASSWORD: AdrianoCoffee_Pass
+    ports:
+      - 5432
+    container_name: postgres_con_3
+    volumes:
+      - C:\postgres_con_3:/var/lib/postgresql/data
+    restart: always
+
+  backend:
+    build: .
+    container_name: AdrianoCoffee-con
+    ports:
+      - 8080:8080
+    depends_on:
+      - db_pg_16
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db_pg_16:5432/AdrianoCoffee
+      - SPRING_DATASOURCE_USERNAME=AdrianoCoffee_User
+      - SPRING_DATASOURCE_PASSWORD=AdrianoCoffee_Pass
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create-drop
