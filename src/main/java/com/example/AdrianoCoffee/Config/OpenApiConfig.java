@@ -23,7 +23,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
         servers = {
                 @Server(
                         description = "Local ENV",
-                        url = "http://adriano-coffee-production.up.railway.app"
+                        url = "http://adriano-coffee-production.up.railway.ap"
                 )
         },
         security = {
