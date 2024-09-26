@@ -2,9 +2,9 @@ services:
   db_pg_16:
     image: postgres:16
     environment:
-      POSTGRES_DB: ${PROD_DB_NAME}
-      POSTGRES_USER: ${PROD_DB_USERNAME}
-      POSTGRES_PASSWORD: ${PROD_DB_PASSWORD}
+      POSTGRES_DB: ${PROD_DB_NAME:AdrianoCoffee}
+      POSTGRES_USER: ${PROD_DB_USERNAME:postgres}
+      POSTGRES_PASSWORD: ${PROD_DB_PASSWORD:qduAanCahEqKZryOaghTouRSsVcRSPir}
     ports:
       - 5432
     container_name: postgres_con_3
@@ -20,7 +20,7 @@ services:
     depends_on:
       - db_pg_16
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db_pg_16:5432/${PROD_DB_NAME}
-      - SPRING_DATASOURCE_USERNAME=${PROD_DB_USERNAME}
-      - SPRING_DATASOURCE_PASSWORD=${PROD_DB_PASSWORD}
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db_pg_16:5432/${PROD_DB_NAME:AdrianoCoffee}
+      - SPRING_DATASOURCE_USERNAME=${PROD_DB_USERNAME:postgres}
+      - SPRING_DATASOURCE_PASSWORD=${PROD_DB_PASSWORD:qduAanCahEqKZryOaghTouRSsVcRSPir}
       - SPRING_JPA_HIBERNATE_DDL_AUTO=create-drop
