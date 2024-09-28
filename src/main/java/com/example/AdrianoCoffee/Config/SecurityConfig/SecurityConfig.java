@@ -35,9 +35,7 @@ public class SecurityConfig {
             source.registerCorsConfiguration("/**", config); // Применяем ко всем путям
 
             cors.configurationSource(source);
-        });
-
-        http.csrf(csrf -> csrf.disable())
+        }).csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
 
                         .requestMatchers(
