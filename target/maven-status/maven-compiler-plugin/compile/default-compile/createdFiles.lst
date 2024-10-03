@@ -2,6 +2,7 @@ com\example\AdrianoCoffee\AdrianoCoffeeApplication.class
 com\example\AdrianoCoffee\Repository\OrderCartRepo.class
 com\example\AdrianoCoffee\Config\UsersConfig.class
 com\example\AdrianoCoffee\Service\UserServices\ChangePasswordRequest.class
+com\example\AdrianoCoffee\Config\SecurityConfig\WebMvcConfig$1.class
 com\example\AdrianoCoffee\Config\SecurityConfig\ApplicationConfig.class
 com\example\AdrianoCoffee\Controller\AdminController.class
 com\example\AdrianoCoffee\Controller\Auth\AuthenticationController.class
@@ -22,6 +23,7 @@ com\example\AdrianoCoffee\Controller\Auth\RegisterRequest.class
 com\example\AdrianoCoffee\Dto\UsersDto.class
 com\example\AdrianoCoffee\Enum\Role.class
 com\example\AdrianoCoffee\Controller\Auth\AuthenticationRequest.class
+com\example\AdrianoCoffee\Config\SecurityConfig\WebMvcConfig.class
 com\example\AdrianoCoffee\Controller\OrderCartController.class
 com\example\AdrianoCoffee\Controller\ManagementController.class
 com\example\AdrianoCoffee\Entity\OrderCart.class
