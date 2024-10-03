@@ -3,6 +3,7 @@ package com.example.AdrianoCoffee.Service;
 import com.example.AdrianoCoffee.Dto.UsersDto;
 import com.example.AdrianoCoffee.Entity.Menu;
 import com.example.AdrianoCoffee.Entity.Users;
+import com.example.AdrianoCoffee.Enum.Role;
 import com.example.AdrianoCoffee.Repository.MenuRepo;
 import com.example.AdrianoCoffee.Repository.UsersRepo;
 import com.example.AdrianoCoffee.Utils.UsersMappingUtil;
@@ -47,6 +48,13 @@ public class AdminService {
         return usersMappingUtil.mapToUsersDto(getUsersById(id).orElse(new Users()));
     }
 
+    public Role getUsersRoleById(Long userId) {
+        boolean exists = usersRepo.existsById(userId);
+        if (!exists) {
+            throw new IllegalStateException("There is no User with id " + userId);
+        }
+        return usersRepo.findById(userId).get().getRole();
+    }
     @Transactional
     public void deleteUser(Long userId) {
         Users user = usersRepo.findById(userId).orElseThrow(() -> new IllegalStateException(

@@ -2,6 +2,7 @@ package com.example.AdrianoCoffee.Controller;
 
 import com.example.AdrianoCoffee.Dto.UsersDto;
 import com.example.AdrianoCoffee.Entity.Menu;
+import com.example.AdrianoCoffee.Enum.Role;
 import com.example.AdrianoCoffee.Service.AdminService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -14,7 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "api/v2/AdrianoCoffee/Admin/")
 @Tag(name = "Admin")
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "http://127.0.0.1:5500", maxAge = 3600)
 public class AdminController {
     private final AdminService adminService;
 
@@ -54,6 +55,11 @@ public class AdminController {
     @GetMapping(path = "getUserById/{userId}")
     public ResponseEntity<UsersDto> getUserById(@PathVariable("userId") Long userId){
         return ResponseEntity.ok(adminService.getUserDtoById(userId));
+    }
+
+    @GetMapping(path = "getUserById/{userId}/Role")
+    public ResponseEntity<Role> getUserRoleById(@PathVariable("userId") Long userId){
+        return ResponseEntity.ok(adminService.getUsersRoleById(userId));
     }
 
     @Operation(

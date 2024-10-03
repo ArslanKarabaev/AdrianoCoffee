@@ -3,6 +3,7 @@ package com.example.AdrianoCoffee.Controller.Auth;
 import com.example.AdrianoCoffee.Entity.Users;
 import com.example.AdrianoCoffee.Repository.UsersRepo;
 import com.example.AdrianoCoffee.Service.JwtService.JwtService;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -41,11 +42,16 @@ public class AuthenticationService {
         repository.save(user);
 
         var jwtToken = jwtService.generateToken(user);
-        return AuthenticationResponse.builder()
-                .token(jwtToken)
-                .build();
 
+        // Возвращаем токен вместе с дополнительными данными
+        return AuthenticationResponse.builder()
+                .success(true) // Добавлено поле success
+                .token(jwtToken)
+                .userId(user.getUser_id()) // Передайте ID пользователя
+                .role(user.getRole()) // Передайте роль пользователя
+                .build();
     }
+
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
         authenticationManager.authenticate(

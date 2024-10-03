@@ -1,5 +1,6 @@
 package com.example.AdrianoCoffee.Controller;
 
+import com.example.AdrianoCoffee.Dto.UsersDto;
 import com.example.AdrianoCoffee.Service.UserServices.ChangePasswordRequest;
 import com.example.AdrianoCoffee.Service.UserServices.UsersService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -10,11 +11,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping(path = "api/v2/AdrianoCoffee/User/ChangePassword")
+@RequestMapping(path = "api/v2/AdrianoCoffee/User")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "http://127.0.0.1:5500", maxAge = 3600)
 public class UsersController {
 
     private final UsersService service;
@@ -32,7 +35,7 @@ public class UsersController {
                     )
             }
     )
-    @PatchMapping
+    @PatchMapping(path = "/ChangePassword")
     public ResponseEntity<?> changePassword(
             @RequestBody ChangePasswordRequest request,
             Principal connectedUser
@@ -54,7 +57,7 @@ public class UsersController {
                     )
             }
     )
-    @PutMapping(path = "updateUser/{userId}")
+    @PutMapping(path = "/UpdateUser/{userId}")
     public void updateUser(
             @PathVariable("userId") Long userId,
             @RequestParam(required = false) String firstName,
@@ -64,4 +67,10 @@ public class UsersController {
             @RequestParam(required = false) String mobnum){
         service.updateUser(userId,firstName,secondName,dateOfBirth,email,mobnum);
     }
+
+    @GetMapping(path = "/getUserInfo/{userId}")
+    public ResponseEntity<Optional<UsersDto>> getUserInfo(@PathVariable("userId") Long userId){
+        return ResponseEntity.ok(Optional.ofNullable(service.getUserInfoDto(userId)));
+    }
+
 }

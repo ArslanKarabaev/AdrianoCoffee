@@ -1,7 +1,9 @@
 package com.example.AdrianoCoffee.Service.UserServices;
 
+import com.example.AdrianoCoffee.Dto.UsersDto;
 import com.example.AdrianoCoffee.Entity.Users;
 import com.example.AdrianoCoffee.Repository.UsersRepo;
+import com.example.AdrianoCoffee.Utils.UsersMappingUtil;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -16,10 +18,12 @@ import java.util.Optional;
 public class UsersService {
     private final PasswordEncoder passwordEncoder;
     private final UsersRepo usersRepo;
+    public final UsersMappingUtil usersMappingUtil;
 
-    public UsersService(PasswordEncoder passwordEncoder, UsersRepo userRepo) {
+    public UsersService(PasswordEncoder passwordEncoder, UsersRepo userRepo, UsersMappingUtil usersMappingUtil) {
         this.passwordEncoder = passwordEncoder;
         this.usersRepo = userRepo;
+        this.usersMappingUtil = usersMappingUtil;
     }
 
     public void changePassword(ChangePasswordRequest request, Principal connectedUser) {
@@ -69,5 +73,13 @@ public class UsersService {
             users.setMobNum(mobNum);
         }
 
+    }
+
+
+    public Optional<Users> getUserInfo(Long id) {
+        return usersRepo.findById(id);
+    }
+    public UsersDto getUserInfoDto(Long id) {
+        return usersMappingUtil.mapToUsersDto(getUserInfo(id).orElse(new Users()));
     }
 }
