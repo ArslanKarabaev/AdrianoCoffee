@@ -6,7 +6,9 @@ import com.example.AdrianoCoffee.Service.UserServices.UsersService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -69,8 +71,15 @@ public class UsersController {
     }
 
     @GetMapping(path = "/getUserInfo/{userId}")
-    public ResponseEntity<Optional<UsersDto>> getUserInfo(@PathVariable("userId") Long userId){
-        return ResponseEntity.ok(Optional.ofNullable(service.getUserInfoDto(userId)));
+    public ResponseEntity<UsersDto> getUserInfo(@PathVariable("userId") Long userId) {
+        try {
+            UsersDto userInfo = service.getUserInfoDto(userId);
+            return ResponseEntity.ok(userInfo);
+        } catch (UsernameNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
     }
+
+
 
 }

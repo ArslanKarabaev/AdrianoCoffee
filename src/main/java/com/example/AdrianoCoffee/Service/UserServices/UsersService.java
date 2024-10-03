@@ -5,6 +5,7 @@ import com.example.AdrianoCoffee.Entity.Users;
 import com.example.AdrianoCoffee.Repository.UsersRepo;
 import com.example.AdrianoCoffee.Utils.UsersMappingUtil;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -79,7 +80,9 @@ public class UsersService {
     public Optional<Users> getUserInfo(Long id) {
         return usersRepo.findById(id);
     }
+
     public UsersDto getUserInfoDto(Long id) {
-        return usersMappingUtil.mapToUsersDto(getUserInfo(id).orElse(new Users()));
+        return usersMappingUtil.mapToUsersDto(getUserInfo(id).orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден")));
     }
+
 }
