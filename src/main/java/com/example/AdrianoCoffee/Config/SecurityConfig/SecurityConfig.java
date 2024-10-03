@@ -24,18 +24,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.cors(cors -> {  // Встроенная поддержка CORS
-            CorsConfiguration config = new CorsConfiguration();
-            config.setAllowCredentials(true);
-            config.addAllowedOriginPattern("*"); // Разрешаем все источники
-            config.addAllowedHeader("*"); // Разрешаем любые заголовки
-            config.addAllowedMethod("*"); // Разрешаем любые методы
-
-            UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-            source.registerCorsConfiguration("/**", config); // Применяем ко всем путям
-
-            cors.configurationSource(source);
-        }).csrf(csrf -> csrf.disable())
+        http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
 
                         .requestMatchers(
@@ -69,4 +58,16 @@ public class SecurityConfig {
         return http.build();
     }
 
+    /*cors(cors -> {  // Встроенная поддержка CORS
+            CorsConfiguration config = new CorsConfiguration();
+            config.setAllowCredentials(true);
+            config.addAllowedOriginPattern("*"); // Разрешаем все источники
+            config.addAllowedHeader("*"); // Разрешаем любые заголовки
+            config.addAllowedMethod("*"); // Разрешаем любые методы
+
+            UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+            source.registerCorsConfiguration("/**", config); // Применяем ко всем путям
+
+            cors.configurationSource(source);
+        }).*/
 }
