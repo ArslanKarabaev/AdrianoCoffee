@@ -14,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "api/v2/AdrianoCoffee/Admin/")
 @Tag(name = "Admin")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class AdminController {
     private final AdminService adminService;
 

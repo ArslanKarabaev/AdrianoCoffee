@@ -14,6 +14,7 @@ import java.time.LocalDate;
 @RestController
 @RequestMapping(path = "api/v2/AdrianoCoffee/User/ChangePassword")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class UsersController {
 
     private final UsersService service;
