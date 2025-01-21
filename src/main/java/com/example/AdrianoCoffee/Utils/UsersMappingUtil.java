@@ -14,7 +14,7 @@ public class UsersMappingUtil {
         usersDto.setDateOfBirth(users.getDateOfBirth());
         usersDto.setEmail(users.getEmail());
         usersDto.setMobNum(users.getMobNum());
-        usersDto.setPassword(users.getPassword());
+        //usersDto.setPassword(users.getPassword());
         usersDto.setAge(users.getAge());
         return usersDto;
     }
@@ -27,7 +27,7 @@ public class UsersMappingUtil {
         users.setDateOfBirth(usersDto.getDateOfBirth());
         users.setEmail(usersDto.getEmail());
         users.setMobNum(usersDto.getMobNum());
-        users.setPassword(usersDto.getPassword());
+        //users.setPassword(usersDto.getPassword());
         users.setAge(usersDto.getAge());
         return users;
     }

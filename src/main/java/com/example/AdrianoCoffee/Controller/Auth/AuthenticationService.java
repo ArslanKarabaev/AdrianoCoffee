@@ -63,7 +63,10 @@ public class AuthenticationService {
         var user = repository.findUsersByEmail(request.getEmail()).orElseThrow(() -> new UsernameNotFoundException("User not found"));
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()
+                .success(true) // Добавлено поле success
                 .token(jwtToken)
+                .userId(user.getUser_id()) // Передайте ID пользователя
+                .role(user.getRole()) // Передайте роль пользователя
                 .build();
 
     }

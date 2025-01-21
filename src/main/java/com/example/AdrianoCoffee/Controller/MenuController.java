@@ -51,7 +51,7 @@ public class MenuController {
                     )
             }
     )
-    @GetMapping(path = "getMenuById/{menuId}")
+        @GetMapping(path = "getMenuById/{menuId}")
     public ResponseEntity<Optional<MenuDto>> getMenuById(@PathVariable("menuId") Long menuId){
         return ResponseEntity.ok(menuService.getMenuByIdDto(menuId));}
 
