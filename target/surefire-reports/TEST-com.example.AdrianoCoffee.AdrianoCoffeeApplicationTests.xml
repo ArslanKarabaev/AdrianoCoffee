@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.example.AdrianoCoffee.AdrianoCoffeeApplicationTests" time="8.256" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.example.AdrianoCoffee.AdrianoCoffeeApplicationTests" time="14.955" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="22"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="RU"/>
     <property name="sun.boot.library.path" value="C:\Users\arsla\.jdks\openjdk-22.0.1\bin"/>
-    <property name="sun.java.command" value="C:\Users\arsla\AppData\Local\Temp\surefire8038767963241847811\surefirebooter-20250125145309888_3.jar C:\Users\arsla\AppData\Local\Temp\surefire8038767963241847811 2025-01-25T14-53-09_642-jvmRun1 surefire-20250125145309888_1tmp surefire_0-20250125145309888_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\arsla\AppData\Local\Temp\surefire9639060557045411700\surefirebooter-20250125151112602_3.jar C:\Users\arsla\AppData\Local\Temp\surefire9639060557045411700 2025-01-25T15-11-12_388-jvmRun1 surefire-20250125151112602_1tmp surefire_0-20250125151112602_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\arsla\IdeaProjects\AdrianoCoffee\AdrianoCoffee\target\test-classes;C:\Users\arsla\IdeaProjects\AdrianoCoffee\AdrianoCoffee\target\classes;C:\Users\arsla\.m2\repository\org\springframework\boot\spring-boot-starter-security\3.2.5\spring-boot-starter-security-3.2.5.jar;C:\Users\arsla\.m2\repository\org\springframework\boot\spring-boot-starter\3.2.5\spring-boot-starter-3.2.5.jar;C:\Users\arsla\.m2\repository\org\springframework\boot\spring-boot-autoconfigure\3.2.5\spring-boot-autoconfigure-3.2.5.jar;C:\Users\arsla\.m2\repository\org\springframework\boot\spring-boot-starter-logging\3.2.5\spring-boot-starter-logging-3.2.5.jar;C:\Users\arsla\.m2\repository\ch\qos\logback\logback-classic\1.4.14\logback-classic-1.4.14.jar;C:\Users\arsla\.m2\repository\ch\qos\logback\logback-core\1.4.14\logback-core-1.4.14.jar;C:\Users\arsla\.m2\repository\org\apache\logging\log4j\log4j-to-slf4j\2.21.1\log4j-to-slf4j-2.21.1.jar;C:\Users\arsla\.m2\repository\org\apache\logging\log4j\log4j-api\2.21.1\log4j-api-2.21.1.jar;C:\Users\arsla\.m2\repository\org\slf4j\jul-to-slf4j\2.0.13\jul-to-slf4j-2.0.13.jar;C:\Users\arsla\.m2\repository\jakarta\annotation\jakarta.annotation-api\2.1.1\jakarta.annotation-api-2.1.1.jar;C:\Users\arsla\.m2\repository\org\yaml\snakeyaml\2.2\snakeyaml-2.2.jar;C:\Users\arsla\.m2\repository\org\springframework\spring-aop\6.1.6\spring-aop-6.1.6.jar;C:\Users\arsla\.m2\repository\org\springframework\spring-beans\6.1.6\spring-beans-6.1.6.jar;C:\Users\arsla\.m2\repository\org\springframework\security\spring-security-config\6.2.4\spring-security-config-6.2.4.jar;C:\Users\arsla\.m2\repository\org\springframework\spring-context\6.1.6\spring-context-6.1.6.jar;C:\Users\arsla\.m2\repository\org\springframework\security\spring-security-web\6.2.4\spring-security-web-6.2.4.jar;C:\Users\arsla\.m2\repository\org\springframework\spring-expression\6.1.6\spring-expression-6.1.6.jar;C:\Users\arsla\.m2\repository\org\springframework\boot\spring-boot-starter-web\3.2.5\spring-boot-starter-web-3.2.5.jar;C:\Users\arsla\.m2\repository\org\springframework\boot\spring-boot-starter-json\3.2.5\spring-boot-starter-json-3.2.5.jar;C:\Users\arsla\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.15.4\jackson-datatype-jdk8-2.15.4.jar;C:\Users\arsla\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.15.4\jackson-datatype-jsr310-2.15.4.jar;C:\Users\arsla\.m2\repository\org\springframework\boot\spring-boot-starter-tomcat\3.2.5\spring-boot-starter-tomcat-3.2.5.jar;C:\Users\arsla\.m2\repository\org\apache\tomcat\embed\tomcat-embed-core\10.1.20\tomcat-embed-core-10.1.20.jar;C:\Users\arsla\.m2\repository\org\apache\tomcat\embed\tomcat-embed-el\10.1.20\tomcat-embed-el-10.1.20.jar;C:\Users\arsla\.m2\repository\org\apache\tomcat\embed\tomcat-embed-websocket\10.1.20\tomcat-embed-websocket-10.1.20.jar;C:\Users\arsla\.m2\repository\org\springframework\spring-web\6.1.6\spring-web-6.1.6.jar;C:\Users\arsla\.m2\repository\io\micrometer\micrometer-observation\1.12.5\micrometer-observation-1.12.5.jar;C:\Users\arsla\.m2\repository\io\micrometer\micrometer-commons\1.12.5\micrometer-commons-1.12.5.jar;C:\Users\arsla\.m2\repository\org\springframework\spring-webmvc\6.1.6\spring-webmvc-6.1.6.jar;C:\Users\arsla\.m2\repository\org\springframework\boot\spring-boot-docker-compose\3.2.5\spring-boot-docker-compose-3.2.5.jar;C:\Users\arsla\.m2\repository\org\springframework\boot\spring-boot\3.2.5\spring-boot-3.2.5.jar;C:\Users\arsla\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.4\jackson-databind-2.15.4.jar;C:\Users\arsla\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.15.4\jackson-annotations-2.15.4.jar;C:\Users\arsla\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.4\jackson-core-2.15.4.jar;C:\Users\arsla\.m2\repository\com\fasterxml\jackson\module\jackson-module-parameter-names\2.15.4\jackson-module-parameter-names-2.15.4.jar;C:\Users\arsla\.m2\repository\org\postgresql\postgresql\42.6.2\postgresql-42.6.2.jar;C:\Users\arsla\.m2\repository\org\checkerframework\checker-qual\3.31.0\checker-qual-3.31.0.jar;C:\Users\arsla\.m2\repository\org\projectlombok\lombok\1.18.32\lombok-1.18.32.jar;C:\Users\arsla\.m2\repository\org\springframework\boot\spring-boot-starter-test\3.2.5\spring-boot-starter-test-3.2.5.jar;C:\Users\arsla\.m2\repository\org\springframework\boot\spring-boot-test\3.2.5\spring-boot-test-3.2.5.jar;C:\Users\arsla\.m2\repository\org\springframework\boot\spring-boot-test-autoconfigure\3.2.5\spring-boot-test-autoconfigure-3.2.5.jar;C:\Users\arsla\.m2\repository\com\jayway\jsonpath\json-path\2.9.0\json-path-2.9.0.jar;C:\Users\arsla\.m2\repository\org\slf4j\slf4j-api\2.0.13\slf4j-api-2.0.13.jar;C:\Users\arsla\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\4.0.2\jakarta.xml.bind-api-4.0.2.jar;C:\Users\arsla\.m2\repository\jakarta\activation\jakarta.activation-api\2.1.3\jakarta.activation-api-2.1.3.jar;C:\Users\arsla\.m2\repository\net\minidev\json-smart\2.5.1\json-smart-2.5.1.jar;C:\Users\arsla\.m2\repository\net\minidev\accessors-smart\2.5.1\accessors-smart-2.5.1.jar;C:\Users\arsla\.m2\repository\org\ow2\asm\asm\9.6\asm-9.6.jar;C:\Users\arsla\.m2\repository\org\assertj\assertj-core\3.24.2\assertj-core-3.24.2.jar;C:\Users\arsla\.m2\repository\net\bytebuddy\byte-buddy\1.14.13\byte-buddy-1.14.13.jar;C:\Users\arsla\.m2\repository\org\awaitility\awaitility\4.2.1\awaitility-4.2.1.jar;C:\Users\arsla\.m2\repository\org\hamcrest\hamcrest\2.2\hamcrest-2.2.jar;C:\Users\arsla\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.2\junit-jupiter-5.10.2.jar;C:\Users\arsla\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.2\junit-jupiter-api-5.10.2.jar;C:\Users\arsla\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\arsla\.m2\repository\org\junit\platform\junit-platform-commons\1.10.2\junit-platform-commons-1.10.2.jar;C:\Users\arsla\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\arsla\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.2\junit-jupiter-params-5.10.2.jar;C:\Users\arsla\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.2\junit-jupiter-engine-5.10.2.jar;C:\Users\arsla\.m2\repository\org\junit\platform\junit-platform-engine\1.10.2\junit-platform-engine-1.10.2.jar;C:\Users\arsla\.m2\repository\org\mockito\mockito-core\5.7.0\mockito-core-5.7.0.jar;C:\Users\arsla\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.13\byte-buddy-agent-1.14.13.jar;C:\Users\arsla\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\arsla\.m2\repository\org\mockito\mockito-junit-jupiter\5.7.0\mockito-junit-jupiter-5.7.0.jar;C:\Users\arsla\.m2\repository\org\skyscreamer\jsonassert\1.5.1\jsonassert-1.5.1.jar;C:\Users\arsla\.m2\repository\com\vaadin\external\google\android-json\0.0.20131108.vaadin1\android-json-0.0.20131108.vaadin1.jar;C:\Users\arsla\.m2\repository\org\springframework\spring-core\6.1.6\spring-core-6.1.6.jar;C:\Users\arsla\.m2\repository\org\springframework\spring-jcl\6.1.6\spring-jcl-6.1.6.jar;C:\Users\arsla\.m2\repository\org\springframework\spring-test\6.1.6\spring-test-6.1.6.jar;C:\Users\arsla\.m2\repository\org\xmlunit\xmlunit-core\2.9.1\xmlunit-core-2.9.1.jar;C:\Users\arsla\.m2\repository\org\springframework\security\spring-security-test\6.2.4\spring-security-test-6.2.4.jar;C:\Users\arsla\.m2\repository\org\springframework\security\spring-security-core\6.2.4\spring-security-core-6.2.4.jar;C:\Users\arsla\.m2\repository\org\springframework\security\spring-security-crypto\6.2.4\spring-security-crypto-6.2.4.jar;C:\Users\arsla\.m2\repository\org\springframework\boot\spring-boot-starter-data-jpa\3.2.5\spring-boot-starter-data-jpa-3.2.5.jar;C:\Users\arsla\.m2\repository\org\springframework\boot\spring-boot-starter-aop\3.2.5\spring-boot-starter-aop-3.2.5.jar;C:\Users\arsla\.m2\repository\org\aspectj\aspectjweaver\1.9.22\aspectjweaver-1.9.22.jar;C:\Users\arsla\.m2\repository\org\springframework\boot\spring-boot-starter-jdbc\3.2.5\spring-boot-starter-jdbc-3.2.5.jar;C:\Users\arsla\.m2\repository\com\zaxxer\HikariCP\5.0.1\HikariCP-5.0.1.jar;C:\Users\arsla\.m2\repository\org\springframework\spring-jdbc\6.1.6\spring-jdbc-6.1.6.jar;C:\Users\arsla\.m2\repository\org\hibernate\orm\hibernate-core\6.4.4.Final\hibernate-core-6.4.4.Final.jar;C:\Users\arsla\.m2\repository\jakarta\persistence\jakarta.persistence-api\3.1.0\jakarta.persistence-api-3.1.0.jar;C:\Users\arsla\.m2\repository\jakarta\transaction\jakarta.transaction-api\2.0.1\jakarta.transaction-api-2.0.1.jar;C:\Users\arsla\.m2\repository\org\jboss\logging\jboss-logging\3.5.3.Final\jboss-logging-3.5.3.Final.jar;C:\Users\arsla\.m2\repository\org\hibernate\common\hibernate-commons-annotations\6.0.6.Final\hibernate-commons-annotations-6.0.6.Final.jar;C:\Users\arsla\.m2\repository\io\smallrye\jandex\3.1.2\jandex-3.1.2.jar;C:\Users\arsla\.m2\repository\com\fasterxml\classmate\1.6.0\classmate-1.6.0.jar;C:\Users\arsla\.m2\repository\org\glassfish\jaxb\jaxb-runtime\4.0.5\jaxb-runtime-4.0.5.jar;C:\Users\arsla\.m2\repository\org\glassfish\jaxb\jaxb-core\4.0.5\jaxb-core-4.0.5.jar;C:\Users\arsla\.m2\repository\org\eclipse\angus\angus-activation\2.0.2\angus-activation-2.0.2.jar;C:\Users\arsla\.m2\repository\org\glassfish\jaxb\txw2\4.0.5\txw2-4.0.5.jar;C:\Users\arsla\.m2\repository\com\sun\istack\istack-commons-runtime\4.1.2\istack-commons-runtime-4.1.2.jar;C:\Users\arsla\.m2\repository\jakarta\inject\jakarta.inject-api\2.0.1\jakarta.inject-api-2.0.1.jar;C:\Users\arsla\.m2\repository\org\antlr\antlr4-runtime\4.13.0\antlr4-runtime-4.13.0.jar;C:\Users\arsla\.m2\repository\org\springframework\data\spring-data-jpa\3.2.5\spring-data-jpa-3.2.5.jar;C:\Users\arsla\.m2\repository\org\springframework\data\spring-data-commons\3.2.5\spring-data-commons-3.2.5.jar;C:\Users\arsla\.m2\repository\org\springframework\spring-orm\6.1.6\spring-orm-6.1.6.jar;C:\Users\arsla\.m2\repository\org\springframework\spring-tx\6.1.6\spring-tx-6.1.6.jar;C:\Users\arsla\.m2\repository\org\springframework\spring-aspects\6.1.6\spring-aspects-6.1.6.jar;C:\Users\arsla\.m2\repository\io\swagger\core\v3\swagger-annotations\2.2.19\swagger-annotations-2.2.19.jar;C:\Users\arsla\.m2\repository\org\springdoc\springdoc-openapi-starter-webmvc-ui\2.1.0\springdoc-openapi-starter-webmvc-ui-2.1.0.jar;C:\Users\arsla\.m2\repository\org\springdoc\springdoc-openapi-starter-webmvc-api\2.1.0\springdoc-openapi-starter-webmvc-api-2.1.0.jar;C:\Users\arsla\.m2\repository\org\springdoc\springdoc-openapi-starter-common\2.1.0\springdoc-openapi-starter-common-2.1.0.jar;C:\Users\arsla\.m2\repository\io\swagger\core\v3\swagger-core-jakarta\2.2.9\swagger-core-jakarta-2.2.9.jar;C:\Users\arsla\.m2\repository\org\apache\commons\commons-lang3\3.13.0\commons-lang3-3.13.0.jar;C:\Users\arsla\.m2\repository\io\swagger\core\v3\swagger-annotations-jakarta\2.2.9\swagger-annotations-jakarta-2.2.9.jar;C:\Users\arsla\.m2\repository\io\swagger\core\v3\swagger-models-jakarta\2.2.9\swagger-models-jakarta-2.2.9.jar;C:\Users\arsla\.m2\repository\jakarta\validation\jakarta.validation-api\3.0.2\jakarta.validation-api-3.0.2.jar;C:\Users\arsla\.m2\repository\com\fasterxml\jackson\dataformat\jackson-dataformat-yaml\2.15.4\jackson-dataformat-yaml-2.15.4.jar;C:\Users\arsla\.m2\repository\org\webjars\swagger-ui\4.18.2\swagger-ui-4.18.2.jar;C:\Users\arsla\.m2\repository\io\jsonwebtoken\jjwt-api\0.11.5\jjwt-api-0.11.5.jar;C:\Users\arsla\.m2\repository\io\jsonwebtoken\jjwt-impl\0.11.5\jjwt-impl-0.11.5.jar;C:\Users\arsla\.m2\repository\io\jsonwebtoken\jjwt-jackson\0.11.5\jjwt-jackson-0.11.5.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -33,7 +33,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="FILE_LOG_CHARSET" value="UTF-8"/>
     <property name="java.awt.headless" value="true"/>
-    <property name="surefire.real.class.path" value="C:\Users\arsla\AppData\Local\Temp\surefire8038767963241847811\surefirebooter-20250125145309888_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\arsla\AppData\Local\Temp\surefire9639060557045411700\surefirebooter-20250125151112602_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="22.0.1+8-16"/>
@@ -53,7 +53,7 @@
     <property name="user.dir" value="C:\Users\arsla\IdeaProjects\AdrianoCoffee\AdrianoCoffee"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="PID" value="22124"/>
+    <property name="PID" value="11024"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="CONSOLE_LOG_CHARSET" value="UTF-8"/>
     <property name="native.encoding" value="Cp1252"/>
@@ -66,9 +66,9 @@
     <property name="java.class.version" value="66.0"/>
     <property name="LOGGED_APPLICATION_NAME" value="[AdrianoCoffee] "/>
   </properties>
-  <testcase name="contextLoads" classname="com.example.AdrianoCoffee.AdrianoCoffeeApplicationTests" time="0.547">
-    <system-out><![CDATA[14:53:11.284 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.AdrianoCoffee.AdrianoCoffeeApplicationTests]: AdrianoCoffeeApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-14:53:11.420 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.AdrianoCoffee.AdrianoCoffeeApplication for test class com.example.AdrianoCoffee.AdrianoCoffeeApplicationTests
+  <testcase name="contextLoads" classname="com.example.AdrianoCoffee.AdrianoCoffeeApplicationTests" time="1.019">
+    <system-out><![CDATA[15:11:14.360 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.AdrianoCoffee.AdrianoCoffeeApplicationTests]: AdrianoCoffeeApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+15:11:14.583 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.AdrianoCoffee.AdrianoCoffeeApplication for test class com.example.AdrianoCoffee.AdrianoCoffeeApplicationTests
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -78,70 +78,70 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.2.5)
 
-2025-01-25T14:53:12.069+06:00  INFO 22124 --- [AdrianoCoffee] [           main] c.e.A.AdrianoCoffeeApplicationTests      : Starting AdrianoCoffeeApplicationTests using Java 22.0.1 with PID 22124 (started by arsla in C:\Users\arsla\IdeaProjects\AdrianoCoffee\AdrianoCoffee)
-2025-01-25T14:53:12.071+06:00  INFO 22124 --- [AdrianoCoffee] [           main] c.e.A.AdrianoCoffeeApplicationTests      : The following 1 profile is active: "prod"
-2025-01-25T14:53:13.375+06:00  INFO 22124 --- [AdrianoCoffee] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-01-25T14:53:13.453+06:00  INFO 22124 --- [AdrianoCoffee] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 67 ms. Found 3 JPA repository interfaces.
-2025-01-25T14:53:14.110+06:00  INFO 22124 --- [AdrianoCoffee] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-01-25T14:53:14.195+06:00  INFO 22124 --- [AdrianoCoffee] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
-2025-01-25T14:53:14.234+06:00  INFO 22124 --- [AdrianoCoffee] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-01-25T14:53:14.556+06:00  INFO 22124 --- [AdrianoCoffee] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-01-25T14:53:14.594+06:00  INFO 22124 --- [AdrianoCoffee] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-01-25T14:53:14.837+06:00  INFO 22124 --- [AdrianoCoffee] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@b70fa38
-2025-01-25T14:53:14.840+06:00  INFO 22124 --- [AdrianoCoffee] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-01-25T14:53:14.884+06:00  WARN 22124 --- [AdrianoCoffee] [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-01-25T14:53:16.009+06:00  INFO 22124 --- [AdrianoCoffee] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-25T15:11:15.688+06:00  INFO 11024 --- [AdrianoCoffee] [           main] c.e.A.AdrianoCoffeeApplicationTests      : Starting AdrianoCoffeeApplicationTests using Java 22.0.1 with PID 11024 (started by arsla in C:\Users\arsla\IdeaProjects\AdrianoCoffee\AdrianoCoffee)
+2025-01-25T15:11:15.690+06:00  INFO 11024 --- [AdrianoCoffee] [           main] c.e.A.AdrianoCoffeeApplicationTests      : The following 1 profile is active: "prod"
+2025-01-25T15:11:17.541+06:00  INFO 11024 --- [AdrianoCoffee] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-25T15:11:17.679+06:00  INFO 11024 --- [AdrianoCoffee] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 116 ms. Found 3 JPA repository interfaces.
+2025-01-25T15:11:19.005+06:00  INFO 11024 --- [AdrianoCoffee] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-25T15:11:19.226+06:00  INFO 11024 --- [AdrianoCoffee] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-01-25T15:11:19.335+06:00  INFO 11024 --- [AdrianoCoffee] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-25T15:11:19.918+06:00  INFO 11024 --- [AdrianoCoffee] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-25T15:11:19.992+06:00  INFO 11024 --- [AdrianoCoffee] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-01-25T15:11:20.448+06:00  INFO 11024 --- [AdrianoCoffee] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@504b8705
+2025-01-25T15:11:20.454+06:00  INFO 11024 --- [AdrianoCoffee] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-01-25T15:11:20.526+06:00  WARN 11024 --- [AdrianoCoffee] [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-25T15:11:22.698+06:00  INFO 11024 --- [AdrianoCoffee] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
 Hibernate: 
     alter table if exists cart_item 
        drop constraint if exists FK9o5l9rlo0wqq57133rhr1mq06
-2025-01-25T14:53:16.032+06:00  WARN 22124 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2025-01-25T14:53:16.032+06:00  WARN 22124 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "cart_item" does not exist, skipping
+2025-01-25T15:11:22.739+06:00  WARN 11024 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-01-25T15:11:22.739+06:00  WARN 11024 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "cart_item" does not exist, skipping
 Hibernate: 
     alter table if exists order_cart_items 
        drop constraint if exists FKetypqybdrc7lln0l6kt8my2hs
-2025-01-25T14:53:16.033+06:00  WARN 22124 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2025-01-25T14:53:16.033+06:00  WARN 22124 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "order_cart_items" does not exist, skipping
+2025-01-25T15:11:22.740+06:00  WARN 11024 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-01-25T15:11:22.741+06:00  WARN 11024 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "order_cart_items" does not exist, skipping
 Hibernate: 
     alter table if exists order_cart_items 
        drop constraint if exists FKnh8oqiok24382v4409rmcyoup
-2025-01-25T14:53:16.034+06:00  WARN 22124 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2025-01-25T14:53:16.034+06:00  WARN 22124 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "order_cart_items" does not exist, skipping
+2025-01-25T15:11:22.742+06:00  WARN 11024 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-01-25T15:11:22.742+06:00  WARN 11024 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "order_cart_items" does not exist, skipping
 Hibernate: 
     drop table if exists cart_item cascade
-2025-01-25T14:53:16.035+06:00  WARN 22124 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2025-01-25T14:53:16.035+06:00  WARN 22124 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "cart_item" does not exist, skipping
+2025-01-25T15:11:22.742+06:00  WARN 11024 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-01-25T15:11:22.743+06:00  WARN 11024 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "cart_item" does not exist, skipping
 Hibernate: 
     drop table if exists menu cascade
-2025-01-25T14:53:16.035+06:00  WARN 22124 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2025-01-25T14:53:16.036+06:00  WARN 22124 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "menu" does not exist, skipping
+2025-01-25T15:11:22.744+06:00  WARN 11024 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-01-25T15:11:22.744+06:00  WARN 11024 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "menu" does not exist, skipping
 Hibernate: 
     drop table if exists order_cart cascade
-2025-01-25T14:53:16.036+06:00  WARN 22124 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2025-01-25T14:53:16.037+06:00  WARN 22124 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "order_cart" does not exist, skipping
+2025-01-25T15:11:22.747+06:00  WARN 11024 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-01-25T15:11:22.748+06:00  WARN 11024 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "order_cart" does not exist, skipping
 Hibernate: 
     drop table if exists order_cart_items cascade
-2025-01-25T14:53:16.037+06:00  WARN 22124 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2025-01-25T14:53:16.037+06:00  WARN 22124 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "order_cart_items" does not exist, skipping
+2025-01-25T15:11:22.749+06:00  WARN 11024 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-01-25T15:11:22.749+06:00  WARN 11024 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "order_cart_items" does not exist, skipping
 Hibernate: 
     drop table if exists users cascade
-2025-01-25T14:53:16.038+06:00  WARN 22124 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2025-01-25T14:53:16.038+06:00  WARN 22124 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "users" does not exist, skipping
+2025-01-25T15:11:22.750+06:00  WARN 11024 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-01-25T15:11:22.750+06:00  WARN 11024 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "users" does not exist, skipping
 Hibernate: 
     drop sequence if exists cart_item_seq
-2025-01-25T14:53:16.039+06:00  WARN 22124 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2025-01-25T14:53:16.039+06:00  WARN 22124 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : sequence "cart_item_seq" does not exist, skipping
+2025-01-25T15:11:22.751+06:00  WARN 11024 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-01-25T15:11:22.752+06:00  WARN 11024 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : sequence "cart_item_seq" does not exist, skipping
 Hibernate: 
     drop sequence if exists menu_seq
-2025-01-25T14:53:16.041+06:00  WARN 22124 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2025-01-25T14:53:16.041+06:00  WARN 22124 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : sequence "menu_seq" does not exist, skipping
+2025-01-25T15:11:22.754+06:00  WARN 11024 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-01-25T15:11:22.754+06:00  WARN 11024 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : sequence "menu_seq" does not exist, skipping
 Hibernate: 
     drop sequence if exists order_cart_seq
-2025-01-25T14:53:16.042+06:00  WARN 22124 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2025-01-25T14:53:16.042+06:00  WARN 22124 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : sequence "order_cart_seq" does not exist, skipping
+2025-01-25T15:11:22.756+06:00  WARN 11024 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-01-25T15:11:22.756+06:00  WARN 11024 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : sequence "order_cart_seq" does not exist, skipping
 Hibernate: 
     drop sequence if exists users_seq
-2025-01-25T14:53:16.042+06:00  WARN 22124 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2025-01-25T14:53:16.042+06:00  WARN 22124 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : sequence "users_seq" does not exist, skipping
+2025-01-25T15:11:22.757+06:00  WARN 11024 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-01-25T15:11:22.757+06:00  WARN 11024 --- [AdrianoCoffee] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : sequence "users_seq" does not exist, skipping
 Hibernate: 
     create sequence cart_item_seq start with 1 increment by 50
 Hibernate: 
@@ -204,11 +204,11 @@ Hibernate:
        add constraint FKnh8oqiok24382v4409rmcyoup 
        foreign key (order_cart_order_id) 
        references order_cart
-2025-01-25T14:53:16.105+06:00  INFO 22124 --- [AdrianoCoffee] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-01-25T14:53:16.400+06:00  INFO 22124 --- [AdrianoCoffee] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-01-25T14:53:17.355+06:00  WARN 22124 --- [AdrianoCoffee] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-01-25T14:53:17.869+06:00  INFO 22124 --- [AdrianoCoffee] [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@404a7c61, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@428e875f, org.springframework.security.web.context.SecurityContextHolderFilter@23471b2f, org.springframework.security.web.header.HeaderWriterFilter@4ed7fb78, org.springframework.web.filter.CorsFilter@1da9f44c, org.springframework.security.web.authentication.logout.LogoutFilter@5a640f98, com.example.AdrianoCoffee.Config.SecurityConfig.JwtAuthenticationFilter@6f65b61d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5c3cc103, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5af08232, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@16a83016, org.springframework.security.web.session.SessionManagementFilter@4daee083, org.springframework.security.web.access.ExceptionTranslationFilter@4fda9fde, org.springframework.security.web.access.intercept.AuthorizationFilter@776eb512]
-2025-01-25T14:53:18.334+06:00  INFO 22124 --- [AdrianoCoffee] [           main] c.e.A.AdrianoCoffeeApplicationTests      : Started AdrianoCoffeeApplicationTests in 6.68 seconds (process running for 8.26)
+2025-01-25T15:11:22.864+06:00  INFO 11024 --- [AdrianoCoffee] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-25T15:11:23.417+06:00  INFO 11024 --- [AdrianoCoffee] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-01-25T15:11:25.398+06:00  WARN 11024 --- [AdrianoCoffee] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-25T15:11:26.148+06:00  INFO 11024 --- [AdrianoCoffee] [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@36361951, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@24c8bc1e, org.springframework.security.web.context.SecurityContextHolderFilter@6d9f624, org.springframework.security.web.header.HeaderWriterFilter@1895f7fe, org.springframework.web.filter.CorsFilter@16488ed7, org.springframework.security.web.authentication.logout.LogoutFilter@6d98e607, com.example.AdrianoCoffee.Config.SecurityConfig.JwtAuthenticationFilter@4ad04b05, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@49d658bf, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@21288943, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3ac2772d, org.springframework.security.web.session.SessionManagementFilter@41f57420, org.springframework.security.web.access.ExceptionTranslationFilter@5ded2dfc, org.springframework.security.web.access.intercept.AuthorizationFilter@592efd6]
+2025-01-25T15:11:27.126+06:00  INFO 11024 --- [AdrianoCoffee] [           main] c.e.A.AdrianoCoffeeApplicationTests      : Started AdrianoCoffeeApplicationTests in 12.132 seconds (process running for 14.254)
 Hibernate: 
     select
         u1_0.user_id,
@@ -234,7 +234,7 @@ Hibernate:
         (date_of_birth, email, first_name, mob_num, password, role, second_name, status, user_id) 
     values
         (?, ?, ?, ?, ?, ?, ?, ?, ?)
-Admin token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3Mzc3OTUxOTgsImV4cCI6MTczNzgyOTc1OH0.tj_kJUWhMNiHxT3jlHX5C-i26SYiju0ycQdgoaP_9a-JVA-RfgyrRQEwmXjSxRV3KyF9FmVWpec1ZXIo9UrdIA
+Admin token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3Mzc3OTYyODcsImV4cCI6MTczNzgzMDg0N30.28dj1-PZwaeAy2oUmf3N09XTPeuh1jgxEn2RlzPsiQva-88QMCEJoF4xwGDuMLhtznvOJli1p0LNNFEZMoDFhw
 Hibernate: 
     select
         u1_0.user_id,
@@ -260,7 +260,7 @@ Hibernate:
         (date_of_birth, email, first_name, mob_num, password, role, second_name, status, user_id) 
     values
         (?, ?, ?, ?, ?, ?, ?, ?, ?)
-Manager token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyQGdtYWlsLmNvbSIsImlhdCI6MTczNzc5NTE5OCwiZXhwIjoxNzM3ODI5NzU4fQ.uBiyz6aPmDupP49c4reKM0Bm0Ir77pJ4oJ5lNs0pu3Fy3xtnQQaiiKttP6toih0RVrywW6iqbLtfIQkKlmatSg
+Manager token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyQGdtYWlsLmNvbSIsImlhdCI6MTczNzc5NjI4NywiZXhwIjoxNzM3ODMwODQ3fQ.MgiuRzr8NGXzvUg94ro-r5l688t5YKGG8zlvY7lTM4REOdcKED0zEhP4j18UKHgxYpoDUMCY88DRKOdrHrvtww
 ]]></system-out>
     <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (C:\Users\arsla\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.13\byte-buddy-agent-1.14.13.jar)
 WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
