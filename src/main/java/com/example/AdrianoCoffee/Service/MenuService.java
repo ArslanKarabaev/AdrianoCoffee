@@ -30,7 +30,7 @@ public class MenuService {
         if (!exists) {
             throw new IllegalStateException("There is no product with ID = " + menuId);
         }
-        return menuRepository.findMenuByMenu_id(menuId);
+        return menuRepository.findMenuById(menuId);
     }
 
     public Optional<MenuDto> getMenuByIdDto(Long menuId) {

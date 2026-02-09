@@ -68,6 +68,7 @@ public class UsersService {
 
         if (dateOfBirth != null && !Objects.equals(users.getDateOfBirth(), dateOfBirth)) {
             users.setDateOfBirth(dateOfBirth);
+            users.setAge(users.getAge());
         }
 
         if (mobNum != null && mobNum.length() > 0 && !Objects.equals(users.getMobNum(), mobNum)) {

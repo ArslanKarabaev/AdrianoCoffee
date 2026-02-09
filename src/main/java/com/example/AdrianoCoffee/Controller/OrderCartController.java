@@ -3,6 +3,7 @@ package com.example.AdrianoCoffee.Controller;
 import com.example.AdrianoCoffee.Dto.OrderCartDto;
 import com.example.AdrianoCoffee.Entity.OrderCart;
 import com.example.AdrianoCoffee.Service.OrderCartService;
+import com.example.AdrianoCoffee.Utils.OrderCartMappingUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.http.ResponseEntity;
@@ -33,9 +34,10 @@ public class OrderCartController {
                     )
             }
     )
-    @GetMapping(path = "getAll")
+        @GetMapping(path = "getAll")
     public ResponseEntity<List<OrderCartDto>> getAllOrders() {
-        return ResponseEntity.ok(orderCartService.getAllOrdersDto());
+        List<OrderCartDto> orderCartDtos = orderCartService.getAllOrdersDto();
+        return ResponseEntity.ok(orderCartDtos);
     }
 
     @Operation(
@@ -52,8 +54,8 @@ public class OrderCartController {
             }
     )
     @PostMapping(path = "addNewOrder")
-    public void addNewOrder(@RequestBody OrderCart order) {
-        orderCartService.addNewOrder(order);
+    public void addNewOrder(@RequestBody OrderCartDto orderCartDto) {
+        orderCartService.addNewOrder(orderCartDto);
     }
 
     @Operation(

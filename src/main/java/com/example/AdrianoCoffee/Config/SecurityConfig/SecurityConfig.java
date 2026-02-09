@@ -27,6 +27,15 @@ public class SecurityConfig {
 
                      //   .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // Разрешаем preflight-запросы
                         .requestMatchers(
+                                "/**",
+                                "/login-register.html",
+                                "/login-register.css",
+                                "/login-register.js",
+                                "/register.html",
+                                "/css/**",
+                                "/js/**",
+                                "/images/**",
+
                                 "/api/v2/auth/register",
                                 "/api/v2/auth/authentication",
                                 "/v3/api-docs",
@@ -52,7 +61,11 @@ public class SecurityConfig {
 
                 )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .addFilterBefore(jwtAutoFilter, UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(jwtAutoFilter, UsernamePasswordAuthenticationFilter.class)
+                .formLogin(form -> form
+                        .loginPage("/login-register.html")
+                        .permitAll()
+                );
 
 
         return http.build();

@@ -1,6 +1,9 @@
 package com.example.AdrianoCoffee.Service;
 
+import com.example.AdrianoCoffee.Entity.CartItem;
+import com.example.AdrianoCoffee.Repository.MenuRepo;
 import com.example.AdrianoCoffee.Repository.OrderCartRepo;
+import com.example.AdrianoCoffee.Utils.MenuMappingUtil;
 import com.example.AdrianoCoffee.Utils.OrderCartMappingUtil;
 import com.example.AdrianoCoffee.Entity.OrderCart;
 import com.example.AdrianoCoffee.Dto.OrderCartDto;
@@ -15,11 +18,15 @@ public class OrderCartService {
 
     private final OrderCartRepo orderCartRepo;
     private final OrderCartMappingUtil orderCartMappingUtil;
+    private final MenuRepo menuRepo;
+    private final MenuMappingUtil menuMappingUtil;
 
     @Autowired
-    public OrderCartService(OrderCartRepo orderCartRepo, OrderCartMappingUtil orderCartMappingUtil) {
+    public OrderCartService(OrderCartRepo orderCartRepo, OrderCartMappingUtil orderCartMappingUtil, MenuRepo menuRepo, MenuMappingUtil menuMappingUtil) {
         this.orderCartRepo = orderCartRepo;
         this.orderCartMappingUtil = orderCartMappingUtil;
+        this.menuRepo = menuRepo;
+        this.menuMappingUtil = menuMappingUtil;
     }
 
     public List<OrderCart> getAllOrders() {
@@ -27,8 +34,8 @@ public class OrderCartService {
     }
     public List<OrderCartDto> getAllOrdersDto(){return getAllOrders().stream().map(orderCartMappingUtil::mapToOrderCartDto).collect(Collectors.toList());}
 
-    public void addNewOrder(OrderCart orderCart) {
-        orderCartRepo.save(orderCart);
+    public void addNewOrder(OrderCartDto orderCartDto) {
+        orderCartRepo.save(orderCartMappingUtil.mapToOrderCart(orderCartDto));
     }
 
     public void deleteOrder(Long orderID) {

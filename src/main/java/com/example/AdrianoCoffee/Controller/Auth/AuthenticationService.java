@@ -36,7 +36,6 @@ public class AuthenticationService {
                 .mobNum(request.getMobNum())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .age(LocalDate.now().getYear() - request.getDateOfBirth().getYear())
-                .status(true)
                 .role(request.getRole())
                 .build();
         repository.save(user);

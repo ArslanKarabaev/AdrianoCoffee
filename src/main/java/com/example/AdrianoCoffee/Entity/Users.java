@@ -31,6 +31,7 @@ public class Users implements UserDetails {
     private String email;
     private String mobNum;
     private String password;
+    @Builder.Default
     private Boolean status = true;
     @Transient
     private Integer age;

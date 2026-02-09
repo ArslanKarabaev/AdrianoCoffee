@@ -1,8 +1,5 @@
 package com.example.AdrianoCoffee.Dto;
 
-import com.example.AdrianoCoffee.Enum.Role;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,7 +27,7 @@ public class UsersDto {
         this.dateOfBirth = dateOfBirth;
         this.email = email;
         this.mobNum = mobNum;
-      //  this.password = password;
-       // this.role = role;
+        //  this.password = password;
+        // this.role = role;
     }
 }
