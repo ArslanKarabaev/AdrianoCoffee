@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.security.Principal;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -30,11 +31,7 @@ public class UsersService {
     public void changePassword(ChangePasswordRequest request, Principal connectedUser) {
         var user = (Users) ((UsernamePasswordAuthenticationToken) connectedUser).getPrincipal();
 
-        if (!passwordEncoder.matches(request.getCurrentPassword(), user.getPassword())) {
-            throw new IllegalStateException("Wrong Password");
-        }
-
-        if (!request.getNewPassword().equals(request.getConfirmationPassword())) {
+        if (!request.getNewPassword().equals(request.getConfirmPassword())) {
             throw new IllegalStateException("Passwords are not the same");
         }
         user.setPassword(passwordEncoder.encode(request.getNewPassword()));
@@ -68,7 +65,7 @@ public class UsersService {
 
         if (dateOfBirth != null && !Objects.equals(users.getDateOfBirth(), dateOfBirth)) {
             users.setDateOfBirth(dateOfBirth);
-            users.setAge(users.getAge());
+            users.setAge(Period.between(dateOfBirth, LocalDate.now()).getYears());
         }
 
         if (mobNum != null && mobNum.length() > 0 && !Objects.equals(users.getMobNum(), mobNum)) {

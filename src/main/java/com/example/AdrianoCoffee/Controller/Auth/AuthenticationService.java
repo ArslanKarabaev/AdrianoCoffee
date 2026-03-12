@@ -66,6 +66,7 @@ public class AuthenticationService {
                 .token(jwtToken)
                 .userId(user.getUser_id()) // Передайте ID пользователя
                 .role(user.getRole()) // Передайте роль пользователя
+                .status(user.getStatus())
                 .build();
 
     }

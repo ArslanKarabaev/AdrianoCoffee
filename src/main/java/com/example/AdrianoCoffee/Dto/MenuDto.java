@@ -13,7 +13,7 @@ public class MenuDto {
 
     private String name;
 
-    private Integer price;
+    private Double price;
 
     private String description; // Здесь будем хранить "Состав: ..."
 
@@ -24,7 +24,7 @@ public class MenuDto {
     @Enumerated(EnumType.STRING) // Важно, чтобы в БД сохранялось слово (COFFEE), а не число (0)
     private Category category;
 
-    public MenuDto(Long id, String name, Integer price, String description, String volume, String imageUrl, Category category) {
+    public MenuDto(Long id, String name, Double price, String description, String volume, String imageUrl, Category category) {
         this.id = id;
         this.name = name;
         this.price = price;

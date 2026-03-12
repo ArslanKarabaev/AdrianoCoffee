@@ -31,3 +31,12 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Application secrets - DO NOT COMMIT!
+application.properties
+
+# Keep example file for reference
+!application-prod.properties
+
+# Docker secrets
+.env

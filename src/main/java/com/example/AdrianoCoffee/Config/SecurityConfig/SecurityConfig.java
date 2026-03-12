@@ -3,7 +3,6 @@ package com.example.AdrianoCoffee.Config.SecurityConfig;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -11,7 +10,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import static com.example.AdrianoCoffee.Enum.Role.ADMIN;
-import static com.example.AdrianoCoffee.Enum.Role.MANAGER;
 
 @Configuration
 @EnableWebSecurity
@@ -49,9 +47,6 @@ public class SecurityConfig {
                                 "/swagger-ui.html",
                                 "/webjars/**"
                         ).permitAll()
-
-                        .requestMatchers("api/v2/AdrianoCoffee/management/**").hasAnyRole(ADMIN.name(), MANAGER.name())
-                        .requestMatchers("api/v2/AdrianoCoffee/management/**").hasAnyAuthority(ADMIN.name(), MANAGER.name())
 
                         .requestMatchers("api/v2/AdrianoCoffee/admin/**").hasAnyRole(ADMIN.name())
                         .requestMatchers("api/v2/AdrianoCoffee/admin/**").hasAuthority(ADMIN.name())

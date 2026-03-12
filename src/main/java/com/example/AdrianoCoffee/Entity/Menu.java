@@ -36,7 +36,7 @@ public class Menu {
 
     private String name;
 
-    private Integer price;
+    private Double price;
 
     private String description; // Здесь будем хранить "Состав: ..."
 

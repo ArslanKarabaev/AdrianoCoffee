@@ -20,6 +20,7 @@ public class UsersDto {
     private Integer age;
     /*@Enumerated(EnumType.STRING)
     private Role role;*/
+    private Boolean status;
 
     public UsersDto(String firstName, String secondName, LocalDate dateOfBirth, String email, String mobNum /*, String password,Role role*/) {
         this.firstName = firstName;

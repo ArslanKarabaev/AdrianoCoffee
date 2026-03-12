@@ -2,8 +2,13 @@ package com.example.AdrianoCoffee.Enum;
 
 public enum Category {
     COFFEE,
-    FIRSTMEALS,
-    SECONDMEALS,
-    DESSERT,
-    BAKING
+    BREAKFAST,
+    SALADS,
+    SOUPS,
+    PASTAS,
+    HOTDISHES,
+    BOWLS,
+    DESSERTS,
+    TEAS,
+    DRINKS
 }
