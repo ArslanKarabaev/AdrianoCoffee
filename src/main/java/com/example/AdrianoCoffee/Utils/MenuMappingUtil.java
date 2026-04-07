@@ -8,21 +8,25 @@ import org.springframework.stereotype.Service;
 public class MenuMappingUtil {
     public MenuDto mapToMenuDto(Menu menu) {
         MenuDto MenuDto = new MenuDto();
-        MenuDto.setMenu_id(menu.getMenu_id());
+        MenuDto.setId(menu.getId());
         MenuDto.setName(menu.getName());
-        MenuDto.setCategory(menu.getCategory());
-        MenuDto.setDescription(menu.getDescription());
         MenuDto.setPrice(menu.getPrice());
+        MenuDto.setDescription(menu.getDescription());
+        MenuDto.setVolume(menu.getVolume());
+        MenuDto.setImageUrl(menu.getImageUrl());
+        MenuDto.setCategory(menu.getCategory());
         return MenuDto;
     }
 
     public Menu mapToMenu(MenuDto menuDto) {
         Menu Menu = new Menu();
-        Menu.setMenu_id(menuDto.getMenu_id());
+        Menu.setId(menuDto.getId());
         Menu.setName(menuDto.getName());
-        Menu.setCategory(menuDto.getCategory());
-        Menu.setDescription(menuDto.getDescription());
         Menu.setPrice(menuDto.getPrice());
+        Menu.setDescription(menuDto.getDescription());
+        Menu.setVolume(menuDto.getVolume());
+        Menu.setImageUrl(menuDto.getImageUrl());
+        Menu.setCategory(menuDto.getCategory());
         return Menu;
     }
 }

@@ -1,8 +1,5 @@
 package com.example.AdrianoCoffee.Dto;
 
-import com.example.AdrianoCoffee.Enum.Role;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,6 +20,7 @@ public class UsersDto {
     private Integer age;
     /*@Enumerated(EnumType.STRING)
     private Role role;*/
+    private Boolean status;
 
     public UsersDto(String firstName, String secondName, LocalDate dateOfBirth, String email, String mobNum /*, String password,Role role*/) {
         this.firstName = firstName;
@@ -30,7 +28,7 @@ public class UsersDto {
         this.dateOfBirth = dateOfBirth;
         this.email = email;
         this.mobNum = mobNum;
-      //  this.password = password;
-       // this.role = role;
+        //  this.password = password;
+        // this.role = role;
     }
 }

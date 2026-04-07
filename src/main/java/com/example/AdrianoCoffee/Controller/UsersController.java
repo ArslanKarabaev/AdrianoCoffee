@@ -1,5 +1,6 @@
 package com.example.AdrianoCoffee.Controller;
 
+import com.example.AdrianoCoffee.Dto.UpdateUserRequest;
 import com.example.AdrianoCoffee.Dto.UsersDto;
 import com.example.AdrianoCoffee.Service.UserServices.ChangePasswordRequest;
 import com.example.AdrianoCoffee.Service.UserServices.UsersService;
@@ -32,7 +33,7 @@ public class UsersController {
                             responseCode = "200"
                     ),
                     @ApiResponse(
-                            description = "Unauthorized / Invalid Token",
+                           description = "Unauthorized / Invalid Token",
                             responseCode = "403"
                     )
             }
@@ -62,12 +63,8 @@ public class UsersController {
     @PutMapping(path = "/UpdateUser/{userId}")
     public void updateUser(
             @PathVariable("userId") Long userId,
-            @RequestParam(required = false) String firstName,
-            @RequestParam(required = false) String secondName,
-            @RequestParam(required = false) LocalDate dateOfBirth,
-            @RequestParam(required = false) String email,
-            @RequestParam(required = false) String mobnum){
-        service.updateUser(userId,firstName,secondName,dateOfBirth,email,mobnum);
+            @RequestBody UpdateUserRequest request){
+        service.updateUser(userId, request.getFirstName(), request.getSecondName(), request.getBirthday(), request.getEmail(), request.getPhone());
     }
 
     @GetMapping(path = "/getUserInfo/{userId}")

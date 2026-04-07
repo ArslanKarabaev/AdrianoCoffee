@@ -31,6 +31,7 @@ public class Users implements UserDetails {
     private String email;
     private String mobNum;
     private String password;
+    @Builder.Default
     private Boolean status = true;
     @Transient
     private Integer age;
@@ -43,7 +44,7 @@ public class Users implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
+        return List.of(new SimpleGrantedAuthority("ROLE_" + role.name()));
     }
 
     @Override

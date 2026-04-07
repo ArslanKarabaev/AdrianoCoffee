@@ -13,7 +13,7 @@ public interface MenuRepo extends JpaRepository<Menu, Long> {
     @Query("SELECT m FROM Menu m WHERE m.name = ?1")
     Optional<Menu> findMenuByName(String name);
 
-    @Query("SELECT m FROM Menu m WHERE m.menu_id = ?1")
-    Optional<Menu> findMenuByMenu_id(Long id);
+    @Query("SELECT m FROM Menu m WHERE m.id = ?1")
+    Optional<Menu> findMenuById(Long id);
 
 }

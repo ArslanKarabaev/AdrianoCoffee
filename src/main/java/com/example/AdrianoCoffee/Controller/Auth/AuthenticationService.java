@@ -36,7 +36,6 @@ public class AuthenticationService {
                 .mobNum(request.getMobNum())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .age(LocalDate.now().getYear() - request.getDateOfBirth().getYear())
-                .status(true)
                 .role(request.getRole())
                 .build();
         repository.save(user);
@@ -67,6 +66,7 @@ public class AuthenticationService {
                 .token(jwtToken)
                 .userId(user.getUser_id()) // Передайте ID пользователя
                 .role(user.getRole()) // Передайте роль пользователя
+                .status(user.getStatus())
                 .build();
 
     }

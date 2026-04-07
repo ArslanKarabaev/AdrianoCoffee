@@ -5,6 +5,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +17,8 @@ import java.util.function.Function;
 
 @Service
 public class JwtService {
-
-    private static final String SECRET_KEY = "IyB6EITnPO8+7Y5A5GbGaay2i31nkP+GV0wrTfhw2OrekgTQhXgZH4NHTMAXqeX1M9i7VZtwUekXR4UHeg79Efp4R7ePNr5Ep05IlQYIuKpbO9i/YSTBX5v/oFRBN1TFKtcA6JSY2eEjNUMV0XcgxMHwu5hKoCvsyuSboppHc5S2UD0sHX9ZTMIPtyRwXMhWncqve4/6O0z9L7+J9Edts65iLr5gxupVMT6yRDms/Z1lTu3q8xDg9UfVSA0JXOPU72kskH777GVdpHVfcZIVtXjVHsr3ScV8pXe0VOZP3cSHCaAQqNNsjXAcHuVPfK1OVHdA3YDfn6WOHizObKt0min0lHLSsCLniz7Ip82VxYUIbr0355IXFVAPwpeo2ycIcTk5BdhBaUh/DqDHMnpuV6sjVL40OcOMdWlvzr6UbIvZ03Y5mNRLxqZG/D66EuiQe03fcMgSFnp7xXNpmRaqnhUzyJTIPBag7fTrESGDMebZlGsUxcePkfGmQwuxfeuuTIfQxBdGV1HlYGPgBrEkg3lOzQ+j2tRq/waFLZN4VBbgkosXi7g7yi8DO4GD6LQTMyF3sTIq5to+OxINX6BIuT5Wu6CYl8j6fM8lNeHA3UPPP8eRv5lHmntUuqM2c9uG5eAiUkgkd42J+4F/T90zqKtYcNoaW8TsXF1RifrgxUvi4rKQLKw+Qd5whbqb/fMG";
+    @Value("${jwt.secret}")
+    private String SECRET_KEY;
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
     }
