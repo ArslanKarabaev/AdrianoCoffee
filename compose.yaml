@@ -20,7 +20,7 @@ services:
     depends_on:
       - db_pg_16
     environment:
-      - SPRING_DATASOURCE_URL=${DATABASE_URL:jdbc:postgresql://db_pg_16:5432/${PROD_DB_NAME}}
+      - SPRING_DATASOURCE_URL=${DATABASE_URL}
       - SPRING_DATASOURCE_USERNAME=${PROD_DB_USERNAME}
       - SPRING_DATASOURCE_PASSWORD=${PROD_DB_PASSWORD}
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=create-drop
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
