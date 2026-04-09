@@ -13,7 +13,6 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "api/v2/AdrianoCoffee/Menu/")
-@CrossOrigin(origins = "http://127.0.0.1:5500", maxAge = 3600)
 public class MenuController {
     private final MenuService menuService;
 

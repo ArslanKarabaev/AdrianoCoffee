@@ -12,7 +12,6 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v2/AdrianoCoffee/Admin/statistics")
-@CrossOrigin(origins = {"http://127.0.0.1:5500", "http://localhost:5500"}, maxAge = 3600)
 public class StatisticsController {
 
     private final StatisticsService statisticsService;

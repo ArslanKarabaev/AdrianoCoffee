@@ -13,14 +13,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "api/v2/AdrianoCoffee/User")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://127.0.0.1:5500", maxAge = 3600)
 public class UsersController {
 
     private final UsersService service;
@@ -33,7 +29,7 @@ public class UsersController {
                             responseCode = "200"
                     ),
                     @ApiResponse(
-                           description = "Unauthorized / Invalid Token",
+                            description = "Unauthorized / Invalid Token",
                             responseCode = "403"
                     )
             }
@@ -63,7 +59,7 @@ public class UsersController {
     @PutMapping(path = "/UpdateUser/{userId}")
     public void updateUser(
             @PathVariable("userId") Long userId,
-            @RequestBody UpdateUserRequest request){
+            @RequestBody UpdateUserRequest request) {
         service.updateUser(userId, request.getFirstName(), request.getSecondName(), request.getBirthday(), request.getEmail(), request.getPhone());
     }
 
@@ -76,7 +72,6 @@ public class UsersController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
-
 
 
 }

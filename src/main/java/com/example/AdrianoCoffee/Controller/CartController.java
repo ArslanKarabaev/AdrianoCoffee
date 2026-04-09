@@ -14,7 +14,6 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v2/Cart")
-@CrossOrigin(origins = "http://127.0.0.1:5500", maxAge = 3600)
 public class CartController {
 
     private final CartService cartService;

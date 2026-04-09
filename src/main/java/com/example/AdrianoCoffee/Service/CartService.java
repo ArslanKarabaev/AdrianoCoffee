@@ -38,15 +38,12 @@ public class CartService {
         Menu menuItem = menuRepo.findById(menuItemId)
                 .orElseThrow(() -> new IllegalStateException("Menu item not found"));
 
-        // Проверяем, есть ли уже этот товар в корзине
         Cart cart = cartRepo.findByUserAndMenuItem(user, menuItem)
                 .orElse(null);
 
         if (cart != null) {
-            // Увеличиваем количество
             cart.setQuantity(cart.getQuantity() + quantity);
         } else {
-            // Создаём новую запись
             cart = Cart.builder()
                     .user(user)
                     .menuItem(menuItem)
@@ -58,7 +55,6 @@ public class CartService {
         return mappingUtil.mapToDto(cart);
     }
 
-    // Получить корзину пользователя
     public List<CartItemDto> getCart(Long userId) {
         List<Cart> cartItems = cartRepo.findByUserId(userId);
         return cartItems.stream()
@@ -66,7 +62,6 @@ public class CartService {
                 .collect(Collectors.toList());
     }
 
-    // Обновить количество товара
     @Transactional
     public CartItemDto updateQuantity(Long cartId, Integer quantity) {
         Cart cart = cartRepo.findById(cartId)
@@ -82,19 +77,16 @@ public class CartService {
         return mappingUtil.mapToDto(cart);
     }
 
-    // Удалить товар из корзины
     @Transactional
     public void removeFromCart(Long cartId) {
         cartRepo.deleteById(cartId);
     }
 
-    // Очистить всю корзину
     @Transactional
     public void clearCart(Long userId) {
         cartRepo.deleteByUserId(userId);
     }
 
-    // Посчитать общую сумму
     public Double calculateTotal(Long userId) {
         List<Cart> cartItems = cartRepo.findByUserId(userId);
         return cartItems.stream()

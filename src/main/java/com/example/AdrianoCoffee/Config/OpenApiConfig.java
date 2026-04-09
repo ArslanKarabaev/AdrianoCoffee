@@ -22,8 +22,8 @@ import io.swagger.v3.oas.annotations.servers.Server;
         ),
         servers = {
                 @Server(
-                        description = "Local ENV",
-                        url = "https://adrianocoffee-production.up.railway.app"
+                        description = "Prod ENV",
+                        url = "https://adrianocoffee-backend.onrender.com"
                 ),
                 @Server(
                         description = "Local ENV",
