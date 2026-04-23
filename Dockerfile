@@ -9,7 +9,6 @@ COPY pom.xml .
 COPY src ./src
 RUN mvn clean package -DskipTests
 
-# Этап 2 — запуск
 FROM eclipse-temurin:17-jre-alpine
 COPY --from=builder /app/target/AdrianoCoffee-0.0.1-SNAPSHOT.jar app.jar
-ENTRYPOINT ["java", "-Dspring.profiles.active=prod", "-jar", "/app.jar"]
+ENTRYPOINT ["java", "-Dspring.profiles.active=prod", "-Dserver.port=${PORT:-8080}", "-jar", "/app.jar"]
