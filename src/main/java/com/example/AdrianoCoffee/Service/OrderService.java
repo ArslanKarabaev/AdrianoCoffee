@@ -7,6 +7,7 @@ import com.example.AdrianoCoffee.Repository.CartRepo;
 import com.example.AdrianoCoffee.Repository.OrderRepo;
 import com.example.AdrianoCoffee.Repository.UsersRepo;
 import com.example.AdrianoCoffee.Utils.OrderCartMappingUtil;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,45 +15,40 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class OrderService {
 
     private final OrderRepo orderRepo;
     private final CartRepo cartRepo;
     private final UsersRepo usersRepo;
     private final OrderCartMappingUtil mappingUtil;
+    private final EmailService emailService;
+    private final BonusService bonusService;
 
-    public OrderService(OrderRepo orderRepo, CartRepo cartRepo, UsersRepo usersRepo, OrderCartMappingUtil mappingUtil) {
-        this.orderRepo = orderRepo;
-        this.cartRepo = cartRepo;
-        this.usersRepo = usersRepo;
-        this.mappingUtil = mappingUtil;
-    }
-
-    // Создать заказ из корзины
     @Transactional
-    public OrderDto createOrder(Long userId, String deliveryAddress, String phone, String comment) {
+    public OrderDto createOrderAfterPayment(Long userId, String deliveryAddress,
+                                            String phone, String comment,
+                                            String paymentIntentId, int pointsUsed) {
         Users user = usersRepo.findById(userId)
                 .orElseThrow(() -> new IllegalStateException("User not found"));
 
-        // Получаем корзину
         List<Cart> cartItems = cartRepo.findByUserId(userId);
-
         if (cartItems.isEmpty()) {
             throw new IllegalStateException("Корзина пуста");
         }
 
-        // Создаём заказ
         Order order = Order.builder()
                 .user(user)
                 .deliveryAddress(deliveryAddress)
                 .phone(phone)
                 .comment(comment)
-                .status(OrderStatus.PENDING)
+                .status(OrderStatus.PAID)
+                .paymentIntentId(paymentIntentId)
+                .paymentMethod("card")
+                .pointsUsed(pointsUsed)
                 .build();
 
-        // Добавляем позиции из корзины
         double totalPrice = 0.0;
-
         for (Cart cartItem : cartItems) {
             Menu menuItem = cartItem.getMenuItem();
             double subtotal = menuItem.getPrice() * cartItem.getQuantity();
@@ -72,56 +68,86 @@ public class OrderService {
         }
 
         order.setTotalPrice(totalPrice);
-
-        // Сохраняем заказ
         order = orderRepo.save(order);
-
-        // Очищаем корзину
         cartRepo.deleteByUserId(userId);
 
+        try {
+            String customerName = user.getFirstName() != null ? user.getFirstName() : "Гость";
+            emailService.sendOrderStatusEmail(
+                    user.getEmail(), customerName,
+                    order.getId(), OrderStatus.PAID.name(), order.getTotalPrice()
+            );
+        } catch (Exception e) {
+            System.err.println("Ошибка email: " + e.getMessage());
+        }
+
         return mappingUtil.mapToDto(order);
     }
 
-    // Получить заказы пользователя
     public List<OrderDto> getUserOrders(Long userId) {
-        List<Order> orders = orderRepo.findByUserIdOrderByCreatedAtDesc(userId);
-        return orders.stream()
-                .map(mappingUtil::mapToDto)
-                .collect(Collectors.toList());
+        return orderRepo.findByUserIdOrderByCreatedAtDesc(userId)
+                .stream().map(mappingUtil::mapToDto).collect(Collectors.toList());
     }
 
-    // Получить все заказы (для админа)
     public List<OrderDto> getAllOrders() {
-        List<Order> orders = orderRepo.findAllByOrderByCreatedAtDesc();
-        return orders.stream()
-                .map(mappingUtil::mapToDto)
-                .collect(Collectors.toList());
+        return orderRepo.findAllByOrderByCreatedAtDesc()
+                .stream().map(mappingUtil::mapToDto).collect(Collectors.toList());
     }
 
-    // Получить заказ по ID
     public OrderDto getOrderById(Long orderId) {
-        Order order = orderRepo.findById(orderId)
-                .orElseThrow(() -> new IllegalStateException("Order not found"));
-        return mappingUtil.mapToDto(order);
+        return mappingUtil.mapToDto(orderRepo.findById(orderId)
+                .orElseThrow(() -> new IllegalStateException("Order not found")));
     }
 
-    // Изменить статус заказа
     @Transactional
-    public OrderDto updateOrderStatus(Long orderId, OrderStatus status) {
+    public OrderDto updateOrderStatus(Long orderId, OrderStatus newStatus) {
         Order order = orderRepo.findById(orderId)
                 .orElseThrow(() -> new IllegalStateException("Order not found"));
 
-        order.setStatus(status);
+        validateStatusTransition(order.getStatus(), newStatus, orderId);
+
+        order.setStatus(newStatus);
         order = orderRepo.save(order);
 
+        if(newStatus == OrderStatus.DELIVERED){
+            try {
+                bonusService.earnPointsForOrder(
+                        order.getUser().getUser_id(),
+                        order.getTotalPrice(),
+                        order.getId()
+                );
+            }catch (Exception e){
+                System.err.println("Ошибка при начеслении баллов: " + e.getMessage());
+            }
+        }
+
+        try {
+            String customerName = order.getUser().getFirstName() != null
+                    ? order.getUser().getFirstName() : "Гость";
+            emailService.sendOrderStatusEmail(
+                    order.getUser().getEmail(), customerName,
+                    order.getId(), newStatus.name(), order.getTotalPrice()
+            );
+        } catch (Exception e) {
+            System.err.println("Ошибка email: " + e.getMessage());
+        }
+
         return mappingUtil.mapToDto(order);
     }
 
-    // Отменить заказ
-    @Transactional
-    public OrderDto cancelOrder(Long orderId) {
-        return updateOrderStatus(orderId, OrderStatus.CANCELLED);
+    private void validateStatusTransition(OrderStatus current, OrderStatus next, Long orderId) {
+        boolean valid = switch (current) {
+            case PAID       -> next == OrderStatus.CONFIRMED || next == OrderStatus.CANCELLED;
+            case CONFIRMED  -> next == OrderStatus.PREPARING;
+            case PREPARING  -> next == OrderStatus.DELIVERING;
+            case DELIVERING -> next == OrderStatus.DELIVERED;
+            case DELIVERED, CANCELLED -> false;
+        };
+
+        if (!valid) {
+            throw new IllegalStateException(
+                    "Недопустимый переход: " + current + " → " + next + " для заказа #" + orderId
+            );
+        }
     }
-
-
 }

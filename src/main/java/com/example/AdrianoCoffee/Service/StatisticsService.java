@@ -1,6 +1,8 @@
 package com.example.AdrianoCoffee.Service;
 
-import com.example.AdrianoCoffee.Dto.*;
+import com.example.AdrianoCoffee.Dto.CategoryStatsDto;
+import com.example.AdrianoCoffee.Dto.PopularDishDto;
+import com.example.AdrianoCoffee.Dto.StatisticsDto;
 import com.example.AdrianoCoffee.Repository.OrderRepo;
 import com.example.AdrianoCoffee.Utils.OrderMappingUtil;
 import org.springframework.stereotype.Service;
@@ -8,7 +10,10 @@ import org.springframework.stereotype.Service;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.TextStyle;
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -33,6 +38,17 @@ public class StatisticsService {
         stats.setTotalRevenue(getTotalRevenue(startDate, endDate));
         stats.setAverageCheck(getAverageCheck(startDate, endDate));
         stats.setActiveUsers(getActiveUsersCount(startDate, endDate));
+        // Бонусная статистика
+        stats.setTotalBonusPointsUsed(
+                orderRepo.sumPointsUsedBetweenDates(
+                        startDate.atStartOfDay(), endDate.plusDays(1).atStartOfDay()
+                )
+        );
+        stats.setOrdersWithBonus(
+                orderRepo.countOrdersWithBonusBetweenDates(
+                        startDate.atStartOfDay(), endDate.plusDays(1).atStartOfDay()
+                )
+        );
 
         // 2. Топ блюд
         stats.setTopDishes(getTopDishes(10, startDate, endDate));
@@ -57,11 +73,11 @@ public class StatisticsService {
      */
     private Long getTotalOrders(LocalDate startDate, LocalDate endDate) {
         String sql = """
-            SELECT COUNT(*) 
-            FROM orders 
-            WHERE created_at BETWEEN :startDate AND :endDate
-            AND status != 'CANCELLED'
-            """;
+                SELECT COUNT(*) 
+                FROM orders 
+                WHERE created_at BETWEEN :startDate AND :endDate
+                AND status != 'CANCELLED'
+                """;
 
         // Используйте EntityManager или создайте метод в репозитории
         return orderRepo.countOrdersBetweenDates(startDate.atStartOfDay(), endDate.plusDays(1).atStartOfDay());

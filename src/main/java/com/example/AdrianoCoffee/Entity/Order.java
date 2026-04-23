@@ -1,6 +1,7 @@
 package com.example.AdrianoCoffee.Entity;
 
 import com.example.AdrianoCoffee.Enum.OrderStatus;
+import com.example.AdrianoCoffee.Enum.PaymentStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,8 +33,7 @@ public class Order {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    @Builder.Default
-    private OrderStatus status = OrderStatus.PENDING;
+    private OrderStatus status;
 
     @Column(name = "delivery_address", length = 500)
     private String deliveryAddress;
@@ -53,6 +53,23 @@ public class Order {
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    // ───── Поля для оплаты ─────────────────────────────
+    @Enumerated(EnumType.STRING)
+    @Column(name = "payment_status")
+    @Builder.Default
+    private PaymentStatus paymentStatus = PaymentStatus.UNPAID;
+
+    // ID платёжного намерения от Stripe (или другого провайдера)
+    @Column(name = "payment_intent_id", length = 255)
+    private String paymentIntentId;
+
+    @Column(name = "payment_method")
+    private String paymentMethod; // "card", "cash"
+
+    @Column(name = "points_used")
+    @Builder.Default
+    private Integer pointsUsed = 0;
 
     @PrePersist
     protected void onCreate() {

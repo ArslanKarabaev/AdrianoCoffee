@@ -10,8 +10,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import static com.example.AdrianoCoffee.Enum.Role.ADMIN;
-import static com.example.AdrianoCoffee.Enum.Role.USER;
+import static com.example.AdrianoCoffee.Enum.Role.*;
 
 @Configuration
 @EnableWebSecurity
@@ -24,13 +23,14 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        // Разрешаем OPTIONS запросы (CORS preflight)
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 
-                        // Публичные эндпоинты (регистрация, логин)
                         .requestMatchers(
                                 "/api/v2/auth/register",
                                 "/api/v2/auth/authentication",
+                                "/api/v2/auth/password-reset/request",
+                                "/api/v2/auth/password-reset/confirm",
+                                "/api/v2/Payment/webhook",
                                 "/v2/api-docs/**",
                                 "/v3/api-docs/**",
                                 "/swagger-resources/**",
@@ -40,21 +40,23 @@ public class SecurityConfig {
                         ).permitAll()
 
                         .requestMatchers("/images/**").permitAll()
+                        .requestMatchers("/images/menu/**").permitAll()
                         .requestMatchers("/uploads/**").permitAll()
 
-                        // Меню доступно всем (гостям тоже)
                         .requestMatchers("/api/v2/AdrianoCoffee/Menu/**").permitAll()
 
-                        // Только для администраторов (с БОЛЬШОЙ буквы Admin!)
                         .requestMatchers("/api/v2/AdrianoCoffee/Admin/**").hasRole(ADMIN.name())
+                        .requestMatchers("/api/v2/Payment/refund/**").hasRole(ADMIN.name())
 
-                        // Только для авторизованных пользователей
-                        .requestMatchers("/api/v2/AdrianoCoffee/User/**").hasAnyRole(USER.name(), ADMIN.name())
+                        .requestMatchers("/api/v2/AdrianoCoffee/Management/**").hasAnyRole(MANAGER.name(), ADMIN.name())
 
-                        // Корзина только для авторизованных
+                        .requestMatchers("/api/v2/AdrianoCoffee/User/**").hasAnyRole(USER.name(), ADMIN.name(), MANAGER.name())
+
+                        .requestMatchers("/api/v2/Bonus/qr-info/**").hasAnyRole(MANAGER.name(), ADMIN.name())
+                        .requestMatchers("/api/v2/Bonus/manual-credit").hasAnyRole(MANAGER.name(), ADMIN.name())
+
                         .requestMatchers("/api/v2/Cart/**").authenticated()
 
-                        // Все остальные запросы требуют авторизации
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

@@ -43,6 +43,7 @@ public class OrderCartMappingUtil {
                 .items(itemDtos)
                 .createdAt(order.getCreatedAt())
                 .updatedAt(order.getUpdatedAt())
+                .pointsUsed(order.getPointsUsed() != null ? order.getPointsUsed() : 0)
                 .build();
     }
 

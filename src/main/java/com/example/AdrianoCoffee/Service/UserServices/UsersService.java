@@ -28,6 +28,12 @@ public class UsersService {
         this.usersMappingUtil = usersMappingUtil;
     }
 
+    public UsersDto getCurrentUserDto(String email) {
+        Users user = usersRepo.findUsersByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        return getUserInfoDto(user.getUser_id());
+    }
+
     public void changePassword(ChangePasswordRequest request, Principal connectedUser) {
         var user = (Users) ((UsernamePasswordAuthenticationToken) connectedUser).getPrincipal();
 
@@ -81,6 +87,12 @@ public class UsersService {
 
     public UsersDto getUserInfoDto(Long id) {
         return usersMappingUtil.mapToUsersDto(getUserInfo(id).orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден")));
+    }
+
+    public Long getUserIdByEmail(String email) {
+        return usersRepo.findUsersByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"))
+                .getUser_id();
     }
 
 }

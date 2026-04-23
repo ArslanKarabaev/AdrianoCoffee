@@ -1,7 +1,9 @@
 package com.example.AdrianoCoffee.Controller;
 
+import com.example.AdrianoCoffee.Dto.OrderDto;
 import com.example.AdrianoCoffee.Dto.UpdateUserRequest;
 import com.example.AdrianoCoffee.Dto.UsersDto;
+import com.example.AdrianoCoffee.Service.OrderService;
 import com.example.AdrianoCoffee.Service.UserServices.ChangePasswordRequest;
 import com.example.AdrianoCoffee.Service.UserServices.UsersService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -13,17 +15,43 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "api/v2/AdrianoCoffee/User")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://127.0.0.1:5500", maxAge = 3600)
 public class UsersController {
 
     private final UsersService service;
+    private final OrderService orderService;
+
+    @GetMapping(path = "/me")
+    public ResponseEntity<UsersDto> getCurrentUser(Principal connectedUser) {
+        try {
+            UsersDto userInfo = service.getCurrentUserDto(connectedUser.getName());
+            return ResponseEntity.ok(userInfo);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
+
+    @GetMapping("/getOrderById/{orderId}")
+    public ResponseEntity<?> getOrderById(
+            @PathVariable Long orderId,
+            Principal connectedUser) {
+        try {
+            // Проверяем что заказ принадлежит пользователю
+            String email = connectedUser.getName();
+            Long userId = service.getUserIdByEmail(email);
+            OrderDto order = orderService.getOrderById(orderId);
+
+            if (!order.getUserId().equals(userId)) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+            }
+            return ResponseEntity.ok(order);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
     @Operation(
             description = "Change Password endpoint for USER",
@@ -33,7 +61,7 @@ public class UsersController {
                             responseCode = "200"
                     ),
                     @ApiResponse(
-                           description = "Unauthorized / Invalid Token",
+                            description = "Unauthorized / Invalid Token",
                             responseCode = "403"
                     )
             }
@@ -63,7 +91,7 @@ public class UsersController {
     @PutMapping(path = "/UpdateUser/{userId}")
     public void updateUser(
             @PathVariable("userId") Long userId,
-            @RequestBody UpdateUserRequest request){
+            @RequestBody UpdateUserRequest request) {
         service.updateUser(userId, request.getFirstName(), request.getSecondName(), request.getBirthday(), request.getEmail(), request.getPhone());
     }
 
@@ -76,7 +104,6 @@ public class UsersController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
-
 
 
 }

@@ -16,10 +16,7 @@ public class UsersDto {
     private LocalDate dateOfBirth;
     private String email;
     private String mobNum;
-    //private String password;
     private Integer age;
-    /*@Enumerated(EnumType.STRING)
-    private Role role;*/
     private Boolean status;
 
     public UsersDto(String firstName, String secondName, LocalDate dateOfBirth, String email, String mobNum /*, String password,Role role*/) {
@@ -28,7 +25,5 @@ public class UsersDto {
         this.dateOfBirth = dateOfBirth;
         this.email = email;
         this.mobNum = mobNum;
-        //  this.password = password;
-        // this.role = role;
     }
 }

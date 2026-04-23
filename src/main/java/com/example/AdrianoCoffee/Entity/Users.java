@@ -38,6 +38,11 @@ public class Users implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @Column(name = "bonus_points")
+    @Builder.Default
+    private Integer bonusPoints = 0;
+
+
     public Integer getAge() {
         return Period.between(dateOfBirth, LocalDate.now()).getYears();
     }

@@ -27,4 +27,5 @@ public class OrderDto {
     private List<OrderItemDto> items;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    private Integer pointsUsed;
 }

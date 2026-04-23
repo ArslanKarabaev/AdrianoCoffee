@@ -27,4 +27,6 @@ public class StatisticsDto {
     private Map<Integer, Long> ordersByHour;
     private Map<String, Long> ordersByDayOfWeek;
     private Map<String, Long> ordersByMonth;
+    private Long totalBonusPointsUsed;
+    private Long ordersWithBonus;
 }

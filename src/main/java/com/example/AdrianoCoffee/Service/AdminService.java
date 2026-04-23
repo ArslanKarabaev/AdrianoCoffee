@@ -1,5 +1,7 @@
 package com.example.AdrianoCoffee.Service;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import com.example.AdrianoCoffee.Dto.UsersDto;
 import com.example.AdrianoCoffee.Entity.Menu;
 import com.example.AdrianoCoffee.Entity.Users;
@@ -7,35 +9,26 @@ import com.example.AdrianoCoffee.Enum.Category;
 import com.example.AdrianoCoffee.Enum.Role;
 import com.example.AdrianoCoffee.Repository.MenuRepo;
 import com.example.AdrianoCoffee.Repository.UsersRepo;
+import com.example.AdrianoCoffee.Service.Storage.ImageStorageService;
 import com.example.AdrianoCoffee.Utils.UsersMappingUtil;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class AdminService {
     public final UsersRepo usersRepo;
     public final MenuRepo menuRepo;
     public final UsersMappingUtil usersMappingUtil;
-    private static final String UPLOAD_DIR = "uploads/images/menu/";
-
-    @Autowired
-    public AdminService(UsersRepo usersRepo, MenuRepo menuRepo, UsersMappingUtil usersMappingUtil) {
-        this.usersRepo = usersRepo;
-        this.menuRepo = menuRepo;
-        this.usersMappingUtil = usersMappingUtil;
-    }
+    private final ImageStorageService imageStorageService;
 
     public List<Users> getAllUsers() {
         return usersRepo.findAll();
@@ -61,11 +54,11 @@ public class AdminService {
         Users user = usersRepo.findUsersByFirstNameAndSecondName(firstName, secondName)
                 .orElseThrow(() -> new IllegalStateException("There is no User with Name " + firstName + " " + secondName));
 
-        return usersRepo.findUsersByFirstNameAndSecondName(firstName,secondName);
+        return usersRepo.findUsersByFirstNameAndSecondName(firstName, secondName);
     }
 
-    public UsersDto getUserByNameDto(String firstName, String secondName){
-        return usersMappingUtil.mapToUsersDto(getUserByName(firstName,secondName).orElse(new Users()));
+    public UsersDto getUserByNameDto(String firstName, String secondName) {
+        return usersMappingUtil.mapToUsersDto(getUserByName(firstName, secondName).orElse(new Users()));
     }
 
     public List<UsersDto> getUsersByFirstName(String firstName) {
@@ -116,28 +109,11 @@ public class AdminService {
     }
 
     public String saveImage(MultipartFile file) throws IOException {
-        // Создаём директорию, если её нет
-        File directory = new File(UPLOAD_DIR);
-        if (!directory.exists()) {
-            directory.mkdirs();
-        }
+        return imageStorageService.saveImage(file);
+    }
 
-        // Генерируем уникальное имя файла
-        String originalFilename = file.getOriginalFilename();
-        String extension = "";
-        if (originalFilename != null && originalFilename.contains(".")) {
-            extension = originalFilename.substring(originalFilename.lastIndexOf("."));
-        }
-        String fileName = UUID.randomUUID().toString() + extension;
-
-        // Путь для сохранения
-        Path filePath = Paths.get(UPLOAD_DIR + fileName);
-
-        // Сохраняем файл
-        Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
-
-        // Возвращаем URL для доступа к изображению
-        return "/images/menu/" + fileName;
+    public void deleteImageFromCloudinary(String imageUrl) {
+        imageStorageService.deleteImage(imageUrl);
     }
 
 
@@ -145,36 +121,41 @@ public class AdminService {
         Menu menu = menuRepo.findMenuById(menuId)
                 .orElseThrow(() -> new IllegalStateException("Product with id " + menuId + " doesn`t exists"));
 
-        try {
-            Path filePath = Paths.get("uploads" + menu.getImageUrl());
-            Files.deleteIfExists(filePath);
-        } catch (IOException e) {
-            throw new RuntimeException("Ошибка при удалении файла: " + menu.getImageUrl(), e);
-        }
+        deleteImageFromCloudinary(menu.getImageUrl());
+
+//        try {
+//            Path filePath = Paths.get("uploads" + menu.getImageUrl());
+//            Files.deleteIfExists(filePath);
+//        } catch (IOException e) {
+//            throw new RuntimeException("Ошибка при удалении файла: " + menu.getImageUrl(), e);
+//        }
 
         menuRepo.deleteById(menuId);
     }
 
     public void updateMenu(Long menuId, String name, Category category, String description, Double price, String volume, MultipartFile image) {
         try {
-            // Получаем существующее блюдо
             Menu existingMenu = menuRepo.findById(menuId)
                     .orElseThrow(() -> new IllegalStateException("Menu item not found"));
 
-            // Обновляем данные
             existingMenu.setName(name);
             existingMenu.setCategory(category);
             existingMenu.setDescription(description);
             existingMenu.setPrice(price);
             existingMenu.setVolume(volume);
 
-            // Обновляем изображение только если загружено новое
             if (image != null && !image.isEmpty()) {
+                deleteImageFromCloudinary(existingMenu.getImageUrl());
+
                 String imageUrl = saveImage(image);
                 existingMenu.setImageUrl(imageUrl);
             }
 
-            // Сохраняем изменения
+//            if (image != null && !image.isEmpty()) {
+//                String imageUrl = saveImage(image);
+//                existingMenu.setImageUrl(imageUrl);
+//            }
+
             menuRepo.save(existingMenu);
 
         } catch (IOException e) {
