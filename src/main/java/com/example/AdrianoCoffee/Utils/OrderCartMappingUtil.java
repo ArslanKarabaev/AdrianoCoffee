@@ -58,6 +58,8 @@ public class OrderCartMappingUtil {
                 .volume(menuItem.getVolume())
                 .quantity(cart.getQuantity())
                 .subtotal(menuItem.getPrice() * cart.getQuantity())
+                .nameEn(menuItem.getNameEn())
+                .nameKg(menuItem.getNameKg())
                 .build();
     }
 }

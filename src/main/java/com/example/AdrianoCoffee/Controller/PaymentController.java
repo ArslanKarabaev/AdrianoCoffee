@@ -4,6 +4,7 @@ import com.example.AdrianoCoffee.Enum.OrderStatus;
 import com.example.AdrianoCoffee.Repository.UsersRepo;
 import com.example.AdrianoCoffee.Service.BonusService;
 import com.example.AdrianoCoffee.Service.OrderService;
+import com.example.AdrianoCoffee.Service.Payment.AsyncOrderService;
 import com.example.AdrianoCoffee.Service.Payment.StripePaymentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 @RestController
 @RequestMapping("/api/v2/Payment")
@@ -20,9 +23,9 @@ public class PaymentController {
     private final StripePaymentService stripePaymentService;
     private final OrderService orderService;
     private final UsersRepo usersRepo;
-    private final BonusService bonusService;
+    private final AsyncOrderService asyncOrderService;
 
-    // Создать PaymentIntent с деталями заказа в metadata
+     //Создать PaymentIntent с деталями заказа в metadata
     @PostMapping("/create-intent")
     public ResponseEntity<Map<String, Object>> createPaymentIntent(
             @RequestBody Map<String, Object> request,
@@ -33,7 +36,7 @@ public class PaymentController {
                     .orElseThrow(() -> new IllegalStateException("User not found"))
                     .getUser_id();
 
-            String currency = request.getOrDefault("currency", "usd").toString();
+            String currency = request.getOrDefault("currency", "kgs").toString();
             String deliveryAddress = request.getOrDefault("deliveryAddress", "").toString();
             String phone = request.getOrDefault("phone", "").toString();
             String comment = request.getOrDefault("comment", "").toString();
@@ -65,17 +68,31 @@ public class PaymentController {
             Authentication authentication) {
         try {
             String paymentIntentId = request.get("paymentIntentId");
-            Long orderId = stripePaymentService.confirmPayment(paymentIntentId);
 
-            // Списываем баллы если были использованы
+            // Запускаем асинхронно и ждём только orderId — не всю цепочку
+            Long orderId = asyncOrderService
+                    .confirmPaymentAsync(paymentIntentId)
+                    .get(10, TimeUnit.SECONDS); // таймаут 10 сек вместо бесконечного ожидания
+
+            // Списание баллов — полностью асинхронно, не блокирует ответ
             String pointsStr = request.get("pointsUsed");
             if (pointsStr != null && Integer.parseInt(pointsStr) > 0) {
                 Long userId = usersRepo.findUsersByEmail(authentication.getName())
                         .orElseThrow().getUser_id();
-                bonusService.spendPoints(userId, Integer.parseInt(pointsStr), orderId);
+                asyncOrderService.spendPointsAsync(userId, Integer.parseInt(pointsStr), orderId);
             }
 
-            return ResponseEntity.ok(Map.of("success", true, "message", "Заказ создан",  "orderId", orderId));
+            return ResponseEntity.ok(Map.of(
+                    "success", true,
+                    "message", "Заказ создан",
+                    "orderId", orderId
+            ));
+
+        } catch (TimeoutException e) {
+            return ResponseEntity.status(504).body(Map.of(
+                    "success", false,
+                    "message", "Превышено время ожидания. Проверьте статус заказа."
+            ));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
         }

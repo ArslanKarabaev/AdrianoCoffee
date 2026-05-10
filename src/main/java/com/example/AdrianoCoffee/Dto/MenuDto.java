@@ -3,11 +3,13 @@ package com.example.AdrianoCoffee.Dto;
 import com.example.AdrianoCoffee.Enum.Category;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class MenuDto {
     private Long id;
 
@@ -24,13 +26,8 @@ public class MenuDto {
     @Enumerated(EnumType.STRING) // Важно, чтобы в БД сохранялось слово (COFFEE), а не число (0)
     private Category category;
 
-    public MenuDto(Long id, String name, Double price, String description, String volume, String imageUrl, Category category) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.description = description;
-        this.volume = volume;
-        this.imageUrl = imageUrl;
-        this.category = category;
-    }
+    private String nameEn;
+    private String nameKg;
+    private String descriptionEn;
+    private String descriptionKg;
 }

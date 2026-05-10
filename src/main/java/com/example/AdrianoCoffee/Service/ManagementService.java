@@ -5,6 +5,7 @@ import com.cloudinary.utils.ObjectUtils;
 import com.example.AdrianoCoffee.Entity.Menu;
 import com.example.AdrianoCoffee.Enum.Category;
 import com.example.AdrianoCoffee.Repository.MenuRepo;
+import com.example.AdrianoCoffee.Service.Payment.AsyncOrderService;
 import com.example.AdrianoCoffee.Service.Storage.ImageStorageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,8 @@ import java.util.Optional;
 public class ManagementService {
     public final MenuRepo menuRepo;
     private final ImageStorageService imageStorageService;
+    private final TranslationService translationService;
+    private final AsyncOrderService asyncOrderService;
 
     public void addNewItemToMenu(Menu menu) {
         Optional<Menu> menuByName = menuRepo.findMenuByName(menu.getName());
@@ -26,6 +29,7 @@ public class ManagementService {
             throw new IllegalStateException("This product already added");
         }
         menuRepo.save(menu);
+        asyncOrderService.translateMenuAsync(menu);
     }
 
     public String saveImage(MultipartFile file) throws IOException {
@@ -75,7 +79,7 @@ public class ManagementService {
 //                String imageUrl = saveImage(image);
 //                existingMenu.setImageUrl(imageUrl);
 //            }
-
+            translationService.translateMenu(existingMenu);
             menuRepo.save(existingMenu);
 
         } catch (IOException e) {

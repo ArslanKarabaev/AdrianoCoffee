@@ -9,6 +9,7 @@ import com.example.AdrianoCoffee.Enum.Category;
 import com.example.AdrianoCoffee.Enum.Role;
 import com.example.AdrianoCoffee.Repository.MenuRepo;
 import com.example.AdrianoCoffee.Repository.UsersRepo;
+import com.example.AdrianoCoffee.Service.Payment.AsyncOrderService;
 import com.example.AdrianoCoffee.Service.Storage.ImageStorageService;
 import com.example.AdrianoCoffee.Utils.UsersMappingUtil;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +30,8 @@ public class AdminService {
     public final MenuRepo menuRepo;
     public final UsersMappingUtil usersMappingUtil;
     private final ImageStorageService imageStorageService;
+    private final TranslationService translationService;
+    private final AsyncOrderService asyncOrderService;
 
     public List<Users> getAllUsers() {
         return usersRepo.findAll();
@@ -106,6 +109,7 @@ public class AdminService {
             throw new IllegalStateException("This product already added");
         }
         menuRepo.save(menu);
+        asyncOrderService.translateMenuAsync(menu);
     }
 
     public String saveImage(MultipartFile file) throws IOException {
@@ -156,6 +160,7 @@ public class AdminService {
 //                existingMenu.setImageUrl(imageUrl);
 //            }
 
+            translationService.translateMenu(existingMenu);
             menuRepo.save(existingMenu);
 
         } catch (IOException e) {

@@ -18,4 +18,6 @@ public class CartItemDto {
     private String volume;
     private Integer quantity;
     private Double subtotal;  // price * quantity
+    private String nameEn;
+    private String nameKg;
 }

@@ -46,4 +46,8 @@ public class Menu {
 
     @Enumerated(EnumType.STRING) // Важно, чтобы в БД сохранялось слово (COFFEE), а не число (0)
     private Category category;
+    private String nameEn;
+    private String nameKg;
+    private String descriptionEn;
+    private String descriptionKg;
 }
