@@ -40,7 +40,6 @@ public class AsyncOrderService {
         }
     }
 
-    // В AsyncOrderService.java добавь:
     @Async("taskExecutor")
     public void translateMenuAsync(Menu menu) {
         try {

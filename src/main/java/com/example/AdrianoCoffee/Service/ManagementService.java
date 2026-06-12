@@ -57,7 +57,10 @@ public class ManagementService {
         menuRepo.deleteById(menuId);
     }
 
-    public void updateMenu(Long menuId, String name, Category category, String description, Double price, String volume, MultipartFile image) {
+    public void updateMenu(Long menuId, String name, Category category, String description,
+                           Double price, String volume, MultipartFile image,
+                           String nameEn, String nameKg,
+                           String descriptionEn, String descriptionKg) {
         try {
             Menu existingMenu = menuRepo.findById(menuId)
                     .orElseThrow(() -> new IllegalStateException("Menu item not found"));
@@ -70,17 +73,24 @@ public class ManagementService {
 
             if (image != null && !image.isEmpty()) {
                 deleteImageFromCloudinary(existingMenu.getImageUrl());
-
-                String imageUrl = saveImage(image);
-                existingMenu.setImageUrl(imageUrl);
+                existingMenu.setImageUrl(saveImage(image));
             }
 
-//            if (image != null && !image.isEmpty()) {
-//                String imageUrl = saveImage(image);
-//                existingMenu.setImageUrl(imageUrl);
-//            }
-            translationService.translateMenu(existingMenu);
-            menuRepo.save(existingMenu);
+            // Если переводы введены вручную — используем их
+            // Если нет — переводим автоматически
+            boolean hasManualTranslation = (nameEn != null && !nameEn.isBlank())
+                    || (nameKg != null && !nameKg.isBlank());
+
+            if (hasManualTranslation) {
+                if (nameEn != null && !nameEn.isBlank()) existingMenu.setNameEn(nameEn);
+                if (nameKg != null && !nameKg.isBlank()) existingMenu.setNameKg(nameKg);
+                if (descriptionEn != null && !descriptionEn.isBlank()) existingMenu.setDescriptionEn(descriptionEn);
+                if (descriptionKg != null && !descriptionKg.isBlank()) existingMenu.setDescriptionKg(descriptionKg);
+                menuRepo.save(existingMenu);
+            } else {
+                menuRepo.save(existingMenu);
+                asyncOrderService.translateMenuAsync(existingMenu); // автоперевод в фоне
+            }
 
         } catch (IOException e) {
             throw new RuntimeException("Ошибка при сохранении изображения: " + e.getMessage(), e);

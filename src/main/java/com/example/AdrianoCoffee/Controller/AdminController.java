@@ -234,10 +234,15 @@ public class AdminController {
             @RequestParam("description") String description,
             @RequestParam("price") Double price,
             @RequestParam(value = "volume", required = false) String volume,
-            @RequestParam(value = "image", required = false) MultipartFile image
+            @RequestParam(value = "image", required = false) MultipartFile image,
+            @RequestParam(value = "nameEn", required = false) String nameEn,
+            @RequestParam(value = "nameKg", required = false) String nameKg,
+            @RequestParam(value = "descriptionEn", required = false) String descriptionEn,
+            @RequestParam(value = "descriptionKg", required = false) String descriptionKg
     ) {
         try {
-            adminService.updateMenu(menuId, name, category, description, price, volume, image);
+            adminService.updateMenu(menuId, name, category, description,
+                    price, volume, image, nameEn, nameKg, descriptionEn, descriptionKg);
 
             Map<String, Object> response = new HashMap<>();
             response.put("success", true);
